@@ -1,0 +1,279 @@
+[
+  {
+    "id": 1,
+    "question": "Which file handles user authentication?",
+    "expected_keywords": [
+      "authentication",
+      "login"
+    ],
+    "expected_sources": [
+      "authentication.md"
+    ]
+  },
+  {
+    "id": 2,
+    "question": "What happens after a user submits registration?",
+    "expected_keywords": [
+      "registration",
+      "validation"
+    ],
+    "expected_sources": [
+      "authentication.md"
+    ]
+  },
+  {
+    "id": 3,
+    "question": "Which module handles payment processing?",
+    "expected_keywords": [
+      "payment",
+      "service"
+    ],
+    "expected_sources": [
+      "architecture.md"
+    ]
+  },
+  {
+    "id": 4,
+    "question": "What endpoint returns the health status?",
+    "expected_keywords": [
+      "health",
+      "/health"
+    ],
+    "expected_sources": [
+      "api.md"
+    ]
+  },
+  {
+    "id": 5,
+    "question": "Which service calls the LLM?",
+    "expected_keywords": [
+      "ollama",
+      "llm"
+    ],
+    "expected_sources": [
+      "architecture.md"
+    ]
+  },
+  {
+    "id": 6,
+    "question": "How does the RAG pipeline retrieve context?",
+    "expected_keywords": [
+      "embedding",
+      "similarity",
+      "context"
+    ],
+    "expected_sources": [
+      "architecture.md"
+    ]
+  },
+  {
+    "id": 7,
+    "question": "What embedding model is configured?",
+    "expected_keywords": [
+      "nomic",
+      "embedding"
+    ],
+    "expected_sources": [
+      "README.md"
+    ]
+  },
+  {
+    "id": 8,
+    "question": "What is the purpose of chunking?",
+    "expected_keywords": [
+      "chunk",
+      "context"
+    ],
+    "expected_sources": [
+      "architecture.md"
+    ]
+  },
+  {
+    "id": 9,
+    "question": "Which component performs cosine similarity?",
+    "expected_keywords": [
+      "retrieval",
+      "cosine"
+    ],
+    "expected_sources": [
+      "architecture.md"
+    ]
+  },
+  {
+    "id": 10,
+    "question": "What does the /api/rag endpoint do?",
+    "expected_keywords": [
+      "rag",
+      "context"
+    ],
+    "expected_sources": [
+      "api.md"
+    ]
+  },
+  {
+    "id": 11,
+    "question": "Which files are involved in authentication?",
+    "expected_keywords": [
+      "authentication.md",
+      "auth"
+    ],
+    "expected_sources": [
+      "authentication.md"
+    ]
+  },
+  {
+    "id": 12,
+    "question": "Which service communicates with Ollama?",
+    "expected_keywords": [
+      "ollama",
+      "service"
+    ],
+    "expected_sources": [
+      "architecture.md"
+    ]
+  },
+  {
+    "id": 13,
+    "question": "Where are vectors stored?",
+    "expected_keywords": [
+      "vectors.npz",
+      "vector"
+    ],
+    "expected_sources": [
+      "architecture.md"
+    ]
+  },
+  {
+    "id": 14,
+    "question": "Which file contains application configuration?",
+    "expected_keywords": [
+      "config.py",
+      "configuration"
+    ],
+    "expected_sources": [
+      "architecture.md"
+    ]
+  },
+  {
+    "id": 15,
+    "question": "Which file contains API routes?",
+    "expected_keywords": [
+      "main.py",
+      "api"
+    ],
+    "expected_sources": [
+      "api.md"
+    ]
+  },
+  {
+    "id": 16,
+    "question": "What could cause retrieval to fail?",
+    "expected_keywords": [
+      "index",
+      "knowledge",
+      "ollama"
+    ],
+    "expected_sources": [
+      "architecture.md"
+    ]
+  },
+  {
+    "id": 17,
+    "question": "What happens if Ollama is unavailable?",
+    "expected_keywords": [
+      "ollama",
+      "error"
+    ],
+    "expected_sources": [
+      "api.md"
+    ]
+  },
+  {
+    "id": 18,
+    "question": "Why can a RAG answer still hallucinate?",
+    "expected_keywords": [
+      "context",
+      "hallucination"
+    ],
+    "expected_sources": [
+      "architecture.md"
+    ]
+  },
+  {
+    "id": 19,
+    "question": "How can retrieval quality be measured?",
+    "expected_keywords": [
+      "retrieval",
+      "quality"
+    ],
+    "expected_sources": [
+      "README.md"
+    ]
+  },
+  {
+    "id": 20,
+    "question": "How is latency measured in this project?",
+    "expected_keywords": [
+      "latency",
+      "seconds"
+    ],
+    "expected_sources": [
+      "README.md"
+    ]
+  },
+  {
+    "id": 21,
+    "question": "What is the difference between direct and RAG answers?",
+    "expected_keywords": [
+      "rag",
+      "context"
+    ],
+    "expected_sources": [
+      "architecture.md"
+    ]
+  },
+  {
+    "id": 22,
+    "question": "Which model is the primary model by default?",
+    "expected_keywords": [
+      "codellama"
+    ],
+    "expected_sources": [
+      "README.md"
+    ]
+  },
+  {
+    "id": 23,
+    "question": "What happens if the knowledge base is not indexed?",
+    "expected_keywords": [
+      "indexed",
+      "knowledge"
+    ],
+    "expected_sources": [
+      "architecture.md"
+    ]
+  },
+  {
+    "id": 24,
+    "question": "How would you add another code model?",
+    "expected_keywords": [
+      "model",
+      "ollama"
+    ],
+    "expected_sources": [
+      "README.md"
+    ]
+  },
+  {
+    "id": 25,
+    "question": "Which components are orchestrated for one user request?",
+    "expected_keywords": [
+      "FastAPI",
+      "retrieval",
+      "Ollama"
+    ],
+    "expected_sources": [
+      "architecture.md"
+    ]
+  }
+]

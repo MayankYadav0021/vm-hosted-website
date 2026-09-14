@@ -1,0 +1,9 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+.env
+results/*.csv
+results/*.json
+data/vectors.npz
+data/metadata.json

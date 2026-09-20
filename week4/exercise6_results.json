@@ -1,0 +1,69 @@
+{
+  "exercise": "Week 4 Exercise 6 - Repository/Codebase Understanding",
+  "total_questions": 10,
+  "passed": 10,
+  "failed": 0,
+  "pass_rate_percent": 100.0,
+  "results": [
+    {
+      "id": 1,
+      "question": "Which file handles user authentication?",
+      "expected": "sample_codebase/auth/auth_service.py",
+      "passed": true
+    },
+    {
+      "id": 2,
+      "question": "Which function performs the actual authentication check?",
+      "expected": "authenticate() in auth/auth_service.py",
+      "passed": true
+    },
+    {
+      "id": 3,
+      "question": "Which file handles session creation?",
+      "expected": "sample_codebase/auth/session.py",
+      "passed": true
+    },
+    {
+      "id": 4,
+      "question": "What happens when a user submits registration?",
+      "expected": "api/registration_routes.py calls users/registration.py, which validates the data and then calls users/user_service.py",
+      "passed": true
+    },
+    {
+      "id": 5,
+      "question": "Which function creates a new user?",
+      "expected": "register_user() in users/user_service.py",
+      "passed": true
+    },
+    {
+      "id": 6,
+      "question": "Which file handles payment processing?",
+      "expected": "sample_codebase/payments/payment_service.py",
+      "passed": true
+    },
+    {
+      "id": 7,
+      "question": "Which API route calls the payment module?",
+      "expected": "payment() in api/payment_routes.py",
+      "passed": true
+    },
+    {
+      "id": 8,
+      "question": "Which tests are related to authentication?",
+      "expected": "sample_codebase/tests/test_auth.py",
+      "passed": true
+    },
+    {
+      "id": 9,
+      "question": "Which files would be affected if the authentication logic changed?",
+      "expected": "auth/auth_service.py, auth/session.py, api/auth_routes.py and tests/test_auth.py",
+      "passed": true
+    },
+    {
+      "id": 10,
+      "question": "Which files are involved in the registration flow?",
+      "expected": "api/registration_routes.py, users/registration.py, users/user_service.py and tests/test_registration.py",
+      "passed": true
+    }
+  ]
+}

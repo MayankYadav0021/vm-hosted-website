@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Week 1 - VM and Apache Hosting</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+            margin: 0;
+        }
+
+        header {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        header h1 {
+            margin-bottom: 10px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 35px auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,.08);
+        }
+
+        .flow {
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+            line-height: 2.2;
+        }
+
+        .tech {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+        }
+
+        .tech div {
+            background: #eef2ff;
+            padding: 18px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 11px 18px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 7px;
+        }
+
+        .button:hover {
+            background: #1d4ed8;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Week 1 — VM & Apache Hosting</h1>
+    <p>Virtual Machine Setup, Web Hosting and GitHub Integration</p>
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <h2>Objective</h2>
+
+        <p>
+            Week 1 focused on setting up an Ubuntu Virtual Machine,
+            hosting a static website using Apache2, and connecting
+            the project with GitHub.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>What Was Implemented</h2>
+
+        <ul>
+            <li>Ubuntu Virtual Machine using Oracle VirtualBox</li>
+            <li>Apache2 web server installation</li>
+            <li>Static HTML website</li>
+            <li>Website hosted inside the VM</li>
+            <li>Git and GitHub repository integration</li>
+            <li>Project changes committed and pushed to GitHub</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>Hosting Architecture</h2>
+
+        <div class="flow">
+            Windows Host
+            <br>↓<br>
+            Oracle VirtualBox
+            <br>↓<br>
+            Ubuntu VM
+            <br>↓<br>
+            Apache2
+            <br>↓<br>
+            Static Website
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Technology Used</h2>
+
+        <div class="tech">
+            <div>Oracle VirtualBox</div>
+            <div>Ubuntu</div>
+            <div>Apache2</div>
+            <div>HTML</div>
+            <div>Git</div>
+            <div>GitHub</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Live Website</h2>
+
+        <p>
+            The website is served by Apache2 from the Ubuntu Virtual Machine.
+        </p>
+
+        <a class="button" href="/">
+            Open Main Project Dashboard
+        </a>
+    </div>
+
+    <a class="button" href="/">
+        ← Back to Main Project
+    </a>
+
+</div>
+
+</body>
+</html>

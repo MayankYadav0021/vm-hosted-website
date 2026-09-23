@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 3 - RAG Application</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+            margin: 0;
+        }
+
+        header {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        header h1 {
+            margin-bottom: 10px;
+        }
+
+        .container {
+            max-width: 1050px;
+            margin: 35px auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,.08);
+        }
+
+        .flow {
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+            line-height: 2;
+        }
+
+        .tech {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+        }
+
+        .tech div {
+            background: #eef2ff;
+            padding: 18px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 11px 18px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 7px;
+        }
+
+        .button:hover {
+            background: #1d4ed8;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Week 3 — RAG Application</h1>
+    <p>FastAPI + Embeddings + Retrieval-Augmented Generation</p>
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <h2>Objective</h2>
+        <p>
+            Week 3 transformed the local LLM setup into a working
+            software-project question answering application using
+            Retrieval-Augmented Generation (RAG).
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>RAG Pipeline</h2>
+
+        <div class="flow">
+            User Question
+            <br>↓<br>
+            Query Embedding
+            <br>↓<br>
+            Vector Similarity Search
+            <br>↓<br>
+            Top-K Relevant Chunks
+            <br>↓<br>
+            Retrieved Context
+            <br>↓<br>
+            Local LLM
+            <br>↓<br>
+            Grounded Response
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Knowledge Base</h2>
+
+        <p>The project knowledge base contains:</p>
+
+        <ul>
+            <li>README.md</li>
+            <li>architecture.md</li>
+            <li>authentication.md</li>
+            <li>api.md</li>
+        </ul>
+
+        <p>
+            Documents are divided into chunks, converted into embeddings,
+            and searched using cosine similarity.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>Technology Stack</h2>
+
+        <div class="tech">
+            <div>FastAPI</div>
+            <div>Ollama</div>
+            <div>nomic-embed-text</div>
+            <div>Cosine Similarity</div>
+            <div>Qwen 2.5 Coder</div>
+            <div>Python</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>API Endpoints</h2>
+
+        <p><strong>GET /health</strong> — Checks API and Ollama status.</p>
+
+        <p><strong>POST /api/chat</strong> — Direct LLM response without retrieval.</p>
+
+        <p><strong>POST /api/rag</strong> — Retrieves project context before generating the response.</p>
+
+        <a class="button" href="http://127.0.0.1:8000/docs">
+            Open FastAPI
+        </a>
+    </div>
+
+    <a class="button" href="/">← Back to Main Project</a>
+
+</div>
+
+</body>
+</html>

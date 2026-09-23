@@ -1,7 +1,223 @@
 <!DOCTYPE html>
-<html><head><title>CodeBase RAG Assistant</title></head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CodeBase RAG Assistant</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+        }
+
+        header {
+            background: #111827;
+            color: white;
+            padding: 35px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 17px;
+            color: #d1d5db;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .intro h2 {
+            margin-bottom: 10px;
+        }
+
+        .weeks {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .card h3 {
+            margin-bottom: 12px;
+            font-size: 22px;
+        }
+
+        .card p {
+            line-height: 1.6;
+            color: #4b5563;
+            margin-bottom: 18px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 16px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 7px;
+        }
+
+        .button:hover {
+            background: #1d4ed8;
+        }
+
+        .architecture {
+            margin-top: 40px;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .flow {
+            margin-top: 20px;
+            font-size: 18px;
+            line-height: 2.2;
+            font-weight: bold;
+        }
+
+        footer {
+            margin-top: 50px;
+            background: #111827;
+            color: #d1d5db;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+
 <body>
-<h1>CodeBase RAG Assistant</h1>
-<p>Week 1 static website for Apache VM hosting.</p>
-<p>The same project continues through Weeks 2–4.</p>
-</body></html>
+
+<header>
+    <h1>CodeBase RAG Assistant</h1>
+    <p>Integrated LLM Application — Weeks 1 to 4 + Guardrails</p>
+</header>
+
+<div class="container">
+
+    <div class="intro">
+        <h2>Project Progression</h2>
+        <p>
+            This project was developed progressively from VM-based web hosting
+            to a local LLM-powered RAG application with evaluation and guardrails.
+        </p>
+    </div>
+
+    <div class="weeks">
+
+        <div class="card">
+            <h3>Week 1 — VM & Apache</h3>
+            <p>
+                Ubuntu Virtual Machine setup, Apache web server,
+                static website hosting and GitHub integration.
+            </p>
+
+            <a class="button" href="week1.html">
+                Current Website
+            </a>
+        </div>
+
+        <div class="card">
+            <h3>Week 2 — Local LLM</h3>
+            <p>
+                Ollama was installed inside the Ubuntu VM.
+                Local code models were downloaded and tested.
+            </p>
+
+            <a class="button" href="week2.html">
+                View Week 2
+            </a>
+        </div>
+
+        <div class="card">
+            <h3>Week 3 — RAG Application</h3>
+            <p>
+                FastAPI, embeddings, vector similarity search,
+                knowledge retrieval and local LLM generation.
+            </p>
+
+            <a class="button" href="week3.html">
+                Open FastAPI
+            </a>
+        </div>
+
+        <div class="card">
+            <h3>Week 4 — Evaluation</h3>
+            <p>
+                Multiple local models were evaluated using common questions,
+                latency, token usage and quality metrics.
+            </p>
+
+            <a class="button" href="week4.html">
+                View Week 4
+            </a>
+        </div>
+
+        <div class="card">
+            <h3>Guardrails</h3>
+            <p>
+                Input validation, prompt-injection filtering and
+                output validation were added to the LLM application.
+            </p>
+
+            <a class="button" href="guardrails.html">
+                Test Guardrails
+            </a>
+        </div>
+
+    </div>
+
+    <div class="architecture">
+
+        <h2>Complete Project Architecture</h2>
+
+        <div class="flow">
+            Week 1: Apache VM Hosting
+            <br>↓<br>
+            Week 2: Ollama + Local LLM
+            <br>↓<br>
+            Week 3: FastAPI + RAG + Embeddings
+            <br>↓<br>
+            Week 4: Model Evaluation
+            <br>↓<br>
+            Guardrails: Input + Output Validation
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+    CodeBase RAG Assistant — Weeks 1 to 4 + Guardrails
+</footer>
+
+</body>
+</html>

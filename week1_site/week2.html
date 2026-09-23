@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 2 - Local LLM</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            margin: 0;
+            color: #1f2937;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,.08);
+        }
+
+        h1 {
+            color: #111827;
+        }
+
+        .box {
+            background: #f3f4f6;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        code {
+            background: #e5e7eb;
+            padding: 3px 6px;
+            border-radius: 4px;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 16px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 7px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Week 2 — Local LLM</h1>
+
+    <p>
+        Week 2 introduced local Large Language Models running inside
+        the Ubuntu Virtual Machine.
+    </p>
+
+    <div class="box">
+        <h2>Technology</h2>
+        <p>Ollama</p>
+        <p>Local CPU-based inference</p>
+    </div>
+
+    <div class="box">
+        <h2>Models Used</h2>
+        <p><code>qwen2.5-coder:3b</code></p>
+        <p><code>starcoder2:3b</code></p>
+        <p><code>codellama:7b</code></p>
+    </div>
+
+    <div class="box">
+        <h2>Ollama API</h2>
+        <p>
+            The local Ollama API runs on port 11434 and is used by
+            the FastAPI application for model inference.
+        </p>
+    </div>
+
+    <a href="/">← Back to Main Project</a>
+
+</div>
+
+</body>
+</html>

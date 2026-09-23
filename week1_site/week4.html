@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 4 - LLM Evaluation</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+            margin: 0;
+        }
+
+        header {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 35px auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,.08);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background: #111827;
+            color: white;
+        }
+
+        .success {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 16px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 7px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Week 4 — LLM Evaluation</h1>
+    <p>Model Evaluation, RAG Analysis & Codebase Understanding</p>
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <h2>Models Evaluated</h2>
+
+        <table>
+            <tr>
+                <th>Model</th>
+                <th>Questions</th>
+                <th>Successful</th>
+                <th>Success Rate</th>
+                <th>Avg Latency</th>
+            </tr>
+
+            <tr>
+                <td>Qwen 2.5 Coder 3B</td>
+                <td>25</td>
+                <td>25</td>
+                <td>100%</td>
+                <td>85.36 sec</td>
+            </tr>
+
+            <tr>
+                <td>StarCoder2 3B</td>
+                <td>25</td>
+                <td>15</td>
+                <td>60%</td>
+                <td>78.45 sec</td>
+            </tr>
+
+            <tr>
+                <td>Code Llama 7B</td>
+                <td>5</td>
+                <td>1</td>
+                <td>20%</td>
+                <td>170.37 sec</td>
+            </tr>
+        </table>
+
+        <p>
+            Code Llama was evaluated on only five questions because the
+            CPU-only VM required substantially more inference time.
+        </p>
+    </div>
+
+    <div class="card">
+
+        <h2>Quality Metrics</h2>
+
+        <table>
+            <tr>
+                <th>Metric</th>
+                <th>Qwen 2.5 Coder</th>
+                <th>StarCoder2</th>
+                <th>Code Llama</th>
+            </tr>
+
+            <tr>
+                <td>Correctness Proxy</td>
+                <td>0.720</td>
+                <td>0.356</td>
+                <td>0.500</td>
+            </tr>
+
+            <tr>
+                <td>Relevance</td>
+                <td>0.720</td>
+                <td>0.356</td>
+                <td>0.500</td>
+            </tr>
+
+            <tr>
+                <td>Retrieval Quality</td>
+                <td>1.000</td>
+                <td>1.000</td>
+                <td>1.000</td>
+            </tr>
+
+            <tr>
+                <td>Avg Output Tokens</td>
+                <td>73.8</td>
+                <td>27.8</td>
+                <td>24.0</td>
+            </tr>
+        </table>
+
+    </div>
+
+    <div class="card">
+
+        <h2>Exercise 6 — Codebase Understanding</h2>
+
+        <p>
+            A multi-file software codebase was created containing
+            authentication, registration, payment, API and test modules.
+        </p>
+
+        <p class="success">
+            10 / 10 questions passed
+        </p>
+
+        <p>
+            Automated project tests:
+            <strong>3 / 3 passed</strong>
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <h2>RAG Pipeline</h2>
+
+        <p>
+            Question → Embedding → Vector Similarity →
+            Retrieved Context → LLM → Response
+        </p>
+
+        <p>
+            The Week 3 RAG system uses
+            <strong>nomic-embed-text</strong> for embeddings and
+            cosine similarity for retrieval.
+        </p>
+
+    </div>
+
+    <a href="/">← Back to Main Project</a>
+
+</div>
+
+</body>
+</html>

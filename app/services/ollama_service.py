@@ -55,7 +55,7 @@ class OllamaService:
                 "model": model,
                 "prompt": text
             },
-            timeout=120
+            timeout=300
         )
 
         r.raise_for_status()

@@ -7,7 +7,7 @@ services:
       - "8000:8000"
     environment:
       OLLAMA_BASE_URL: http://host.docker.internal:11434
-      MODEL_PRIMARY: codellama:7b
+      MODEL_PRIMARY: qwen2.5-coder:3b
       MODEL_2: starcoder2:3b
       MODEL_3: qwen2.5-coder:3b
       EMBED_MODEL: nomic-embed-text

@@ -1,11 +1,20 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from app.config import MODEL_PRIMARY
 from app.schemas import ChatRequest, ChatResponse
 from app.services.ollama_service import OllamaService
 from app.services.rag_service import RAGService
 from app.services.guardrail_service import GuardrailService
 
-app = FastAPI(title="CodeBase RAG Assistant", version="1.1")
+app = FastAPI(title="MediCode AI", version="2.0")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 ollama = OllamaService()
 rag = RAGService()

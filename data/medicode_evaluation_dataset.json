@@ -1,0 +1,232 @@
+[
+  {
+    "id": 1,
+    "category": "Explanation",
+    "question": "Explain how patient registration works in MediCore.",
+    "expected_sources": ["patient_management.md"],
+    "expected_keywords": ["patient", "registration", "email", "validation"],
+    "test_required": false
+  },
+  {
+    "id": 2,
+    "category": "Explanation",
+    "question": "Explain how appointment creation works in MediCore.",
+    "expected_sources": ["appointment_management.md"],
+    "expected_keywords": ["appointment", "doctor", "availability", "time"],
+    "test_required": false
+  },
+  {
+    "id": 3,
+    "category": "Explanation",
+    "question": "Explain the role of authentication and authorization in MediCore.",
+    "expected_sources": ["security_and_authentication.md"],
+    "expected_keywords": ["authentication", "authorization", "security", "role"],
+    "test_required": false
+  },
+  {
+    "id": 4,
+    "category": "Explanation",
+    "question": "Explain how billing is related to patients and appointments.",
+    "expected_sources": ["billing_management.md"],
+    "expected_keywords": ["billing", "patient", "appointment", "payment"],
+    "test_required": false
+  },
+
+  {
+    "id": 5,
+    "category": "Code Retrieval",
+    "question": "Which component should handle patient registration requests?",
+    "expected_sources": ["patient_management.md"],
+    "expected_keywords": ["patient", "registration", "API", "service"],
+    "test_required": false
+  },
+  {
+    "id": 6,
+    "category": "Code Retrieval",
+    "question": "Which module is responsible for appointment management?",
+    "expected_sources": ["appointment_management.md"],
+    "expected_keywords": ["appointment", "management", "service"],
+    "test_required": false
+  },
+  {
+    "id": 7,
+    "category": "Code Retrieval",
+    "question": "Which component should enforce authentication for API endpoints?",
+    "expected_sources": ["security_and_authentication.md"],
+    "expected_keywords": ["authentication", "API", "endpoint", "token"],
+    "test_required": false
+  },
+  {
+    "id": 8,
+    "category": "Code Retrieval",
+    "question": "Which component handles billing and payment processing?",
+    "expected_sources": ["billing_management.md"],
+    "expected_keywords": ["billing", "payment", "service"],
+    "test_required": false
+  },
+
+  {
+    "id": 9,
+    "category": "Dependency Understanding",
+    "question": "What components are involved when a patient registration request is processed?",
+    "expected_sources": ["patient_management.md", "system_architecture.md"],
+    "expected_keywords": ["patient", "registration", "API", "service"],
+    "test_required": false
+  },
+  {
+    "id": 10,
+    "category": "Dependency Understanding",
+    "question": "What components are involved when an appointment is created?",
+    "expected_sources": ["appointment_management.md", "system_architecture.md"],
+    "expected_keywords": ["appointment", "API", "service", "availability"],
+    "test_required": false
+  },
+  {
+    "id": 11,
+    "category": "Dependency Understanding",
+    "question": "Which parts of MediCore depend on authentication and authorization?",
+    "expected_sources": ["security_and_authentication.md", "system_architecture.md"],
+    "expected_keywords": ["authentication", "authorization", "API", "security"],
+    "test_required": false
+  },
+  {
+    "id": 12,
+    "category": "Dependency Understanding",
+    "question": "How are billing operations related to patient and appointment data?",
+    "expected_sources": ["billing_management.md"],
+    "expected_keywords": ["billing", "patient", "appointment"],
+    "test_required": false
+  },
+
+  {
+    "id": 13,
+    "category": "Bug Analysis",
+    "question": "What could cause an appointment double-booking problem in MediCore?",
+    "expected_sources": ["appointment_management.md"],
+    "expected_keywords": ["double booking", "availability", "appointment"],
+    "test_required": false
+  },
+  {
+    "id": 14,
+    "category": "Bug Analysis",
+    "question": "What security problem could occur if backend authorization is bypassed?",
+    "expected_sources": ["security_and_authentication.md"],
+    "expected_keywords": ["authorization", "backend", "security", "access"],
+    "test_required": false
+  },
+  {
+    "id": 15,
+    "category": "Bug Analysis",
+    "question": "What could cause patient registration validation to fail?",
+    "expected_sources": ["patient_management.md"],
+    "expected_keywords": ["patient", "validation", "email", "registration"],
+    "test_required": false
+  },
+  {
+    "id": 16,
+    "category": "Bug Analysis",
+    "question": "What could happen if a payment failure is not handled correctly?",
+    "expected_sources": ["billing_management.md"],
+    "expected_keywords": ["payment", "failed", "billing", "status"],
+    "test_required": false
+  },
+
+  {
+    "id": 17,
+    "category": "Code Generation",
+    "question": "Generate a Python unit test for validating a patient registration request.",
+    "expected_sources": ["patient_management.md"],
+    "expected_keywords": ["patient", "validation", "test"],
+    "test_required": true
+  },
+  {
+    "id": 18,
+    "category": "Code Generation",
+    "question": "Generate a Python function that checks whether an appointment time slot is available.",
+    "expected_sources": ["appointment_management.md"],
+    "expected_keywords": ["appointment", "availability", "time"],
+    "test_required": true
+  },
+  {
+    "id": 19,
+    "category": "Code Generation",
+    "question": "Generate a Python unit test for authentication of a protected API endpoint.",
+    "expected_sources": ["security_and_authentication.md"],
+    "expected_keywords": ["authentication", "API", "token", "test"],
+    "test_required": true
+  },
+  {
+    "id": 20,
+    "category": "Code Generation",
+    "question": "Generate a Python function that validates billing input before payment processing.",
+    "expected_sources": ["billing_management.md"],
+    "expected_keywords": ["billing", "payment", "validation"],
+    "test_required": true
+  },
+
+  {
+    "id": 21,
+    "category": "Refactoring",
+    "question": "How could the appointment validation logic be refactored to improve maintainability?",
+    "expected_sources": ["appointment_management.md"],
+    "expected_keywords": ["appointment", "validation", "refactor", "maintainability"],
+    "test_required": false
+  },
+  {
+    "id": 22,
+    "category": "Refactoring",
+    "question": "How could authentication logic be organized to make it easier to maintain?",
+    "expected_sources": ["security_and_authentication.md"],
+    "expected_keywords": ["authentication", "security", "service", "maintain"],
+    "test_required": false
+  },
+  {
+    "id": 23,
+    "category": "Refactoring",
+    "question": "How could patient validation logic be made more reusable?",
+    "expected_sources": ["patient_management.md"],
+    "expected_keywords": ["patient", "validation", "reusable"],
+    "test_required": false
+  },
+  {
+    "id": 24,
+    "category": "Refactoring",
+    "question": "How could billing logic be separated into smaller maintainable components?",
+    "expected_sources": ["billing_management.md"],
+    "expected_keywords": ["billing", "service", "payment", "maintain"],
+    "test_required": false
+  },
+
+  {
+    "id": 25,
+    "category": "RAG-based Question",
+    "question": "According to the MediCore documentation, how does Appointment Management prevent double booking?",
+    "expected_sources": ["appointment_management.md"],
+    "expected_keywords": ["appointment", "availability", "double booking"],
+    "test_required": false
+  },
+  {
+    "id": 26,
+    "category": "RAG-based Question",
+    "question": "According to the MediCore security documentation, what roles are supported?",
+    "expected_sources": ["security_and_authentication.md"],
+    "expected_keywords": ["role", "admin", "doctor", "receptionist"],
+    "test_required": false
+  },
+  {
+    "id": 27,
+    "category": "RAG-based Question",
+    "question": "According to the MediCore billing documentation, what happens when a payment fails?",
+    "expected_sources": ["billing_management.md"],
+    "expected_keywords": ["payment", "failed", "billing"],
+    "test_required": false
+  },
+  {
+    "id": 28,
+    "category": "RAG-based Question",
+    "question": "According to the MediCore patient documentation, what information is required during patient registration?",
+    "expected_sources": ["patient_management.md"],
+    "expected_keywords": ["patient", "registration", "email"],
+    "test_required": false
+  }
+]

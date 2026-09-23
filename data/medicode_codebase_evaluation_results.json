@@ -1,0 +1,15 @@
+{
+  "project": "MediCode AI",
+  "dataset": "medicode_codebase_questions.json",
+  "total_questions": 8,
+  "passed": 8,
+  "failed": 0,
+  "verification_rate": 100.0,
+  "categories": [
+    "Code Retrieval",
+    "Dependency Understanding",
+    "Bug Analysis",
+    "Refactoring"
+  ],
+  "note": "Deterministic verification that expected implementation files contain the relevant code. This is not an LLM answer-accuracy measurement."
+}

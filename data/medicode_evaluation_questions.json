@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "question": "How does the Appointment Management module prevent double booking?",
+    "expected_keywords": ["appointment", "availability", "double booking"],
+    "expected_sources": ["appointment_management.md"]
+  },
+  {
+    "id": 2,
+    "question": "What information is required when registering a patient?",
+    "expected_keywords": ["patient", "registration", "email"],
+    "expected_sources": ["patient_management.md"]
+  },
+  {
+    "id": 3,
+    "question": "How are billing records connected to patients and appointments?",
+    "expected_keywords": ["billing", "patient", "appointment"],
+    "expected_sources": ["billing_management.md"]
+  },
+  {
+    "id": 4,
+    "question": "Why must authorization be implemented on the backend?",
+    "expected_keywords": ["authorization", "backend", "security"],
+    "expected_sources": ["security_and_authentication.md"]
+  },
+  {
+    "id": 5,
+    "question": "What roles are supported by the MediCore access control system?",
+    "expected_keywords": ["role", "admin", "doctor", "receptionist"],
+    "expected_sources": ["security_and_authentication.md"]
+  },
+  {
+    "id": 6,
+    "question": "What is the high-level request flow in MediCore?",
+    "expected_keywords": ["request", "API", "service"],
+    "expected_sources": ["system_architecture.md"]
+  },
+  {
+    "id": 7,
+    "question": "How does the system handle cancellation of an appointment?",
+    "expected_keywords": ["appointment", "cancellation", "status"],
+    "expected_sources": ["appointment_management.md"]
+  },
+  {
+    "id": 8,
+    "question": "What validation is performed before creating a patient record?",
+    "expected_keywords": ["validation", "patient", "email"],
+    "expected_sources": ["patient_management.md"]
+  },
+  {
+    "id": 9,
+    "question": "What happens when a payment fails?",
+    "expected_keywords": ["payment", "failed", "billing"],
+    "expected_sources": ["billing_management.md"]
+  },
+  {
+    "id": 10,
+    "question": "How does authentication protect MediCore API endpoints?",
+    "expected_keywords": ["authentication", "token", "API"],
+    "expected_sources": ["security_and_authentication.md"]
+  }
+]

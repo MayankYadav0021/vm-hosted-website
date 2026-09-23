@@ -103,6 +103,195 @@
             font-size: 13px;
             color: #64748b;
         }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-top: 20px;
+        }
+
+        .metric {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 18px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2563eb;
+            margin-bottom: 8px;
+        }
+
+        .metric-label {
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        .accuracy-chart {
+            margin-top: 28px;
+        }
+
+        .bar-row {
+            display: grid;
+            grid-template-columns: 150px 1fr 80px;
+            align-items: center;
+            gap: 12px;
+            margin: 16px 0;
+            font-size: 14px;
+        }
+
+        .bar {
+            height: 18px;
+            background: #e2e8f0;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            width: 0%;
+            border-radius: 20px;
+        }
+
+        .bar-fill.pending {
+            width: 0%;
+        }
+
+        .architecture {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 25px;
+        }
+
+        .flow-box {
+            width: min(620px, 90%);
+            box-sizing: border-box;
+            padding: 15px 20px;
+            text-align: center;
+            background: #eff6ff;
+            border: 2px solid #2563eb;
+            border-radius: 10px;
+        }
+
+        .flow-box strong {
+            display: block;
+            color: #17324d;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .flow-box span {
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        .final-box {
+            background: #dbeafe;
+        }
+
+        .arrow {
+            font-size: 25px;
+            color: #2563eb;
+            line-height: 1;
+            margin: 6px 0;
+        }
+
+        .synopsis-graph {
+            width: 100%;
+            overflow-x: auto;
+            margin-top: 25px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .synopsis-graph svg {
+            display: block;
+            width: 100%;
+            min-width: 850px;
+            height: auto;
+        }
+
+        .graph-box {
+            fill: #eff6ff;
+            stroke: #2563eb;
+            stroke-width: 2;
+        }
+
+        .graph-box.secondary {
+            fill: #f0fdf4;
+            stroke: #16a34a;
+        }
+
+        .graph-box.knowledge {
+            fill: #fff7ed;
+            stroke: #ea580c;
+        }
+
+        .graph-box.llm {
+            fill: #f5f3ff;
+            stroke: #7c3aed;
+        }
+
+        .graph-box.guard {
+            fill: #fefce8;
+            stroke: #ca8a04;
+        }
+
+        .graph-box.final-graph {
+            fill: #dbeafe;
+            stroke: #1d4ed8;
+            stroke-width: 3;
+        }
+
+        .graph-line {
+            stroke: #2563eb;
+            stroke-width: 3;
+            fill: none;
+        }
+
+        .graph-title {
+            font-family: Arial, sans-serif;
+            font-size: 17px;
+            font-weight: bold;
+            fill: #17324d;
+        }
+
+        .graph-text {
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            fill: #64748b;
+        }
+
+        .graph-label {
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            fill: #475569;
+        }
+
+        @media (max-width: 800px) {
+            .metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 520px) {
+            .metrics {
+                grid-template-columns: 1fr;
+            }
+
+            .bar-row {
+                grid-template-columns: 1fr;
+                gap: 6px;
+            }
+        }
     </style>
 </head>
 
@@ -151,6 +340,377 @@
                     System architecture
                 </span>
             </div>
+        </div>
+
+        <div class="card">
+            <h2>Evaluation & Accuracy</h2>
+            <p>
+                MediCode is evaluated using retrieval quality, RAG analysis,
+                guardrail testing, AI-output testing, and deterministic codebase
+                verification. LLM generation results are reported separately from
+                retrieval and source-code verification results.
+            </p>
+
+            <div class="metrics">
+                <div class="metric">
+                    <div class="metric-value">100%</div>
+                    <div class="metric-label">Grounded Retrieval Accuracy</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">4.47s</div>
+                    <div class="metric-label">Avg RAG Retrieval Latency</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">12/12</div>
+                    <div class="metric-label">Guardrail Tests Passed</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">8/8</div>
+                    <div class="metric-label">Codebase Checks Passed</div>
+                </div>
+            </div>
+
+            <div class="accuracy-chart">
+                <h3>Verified Evaluation Results</h3>
+
+                <div class="bar-row">
+                    <span>Grounded Retrieval</span>
+                    <div class="bar"><div class="bar-fill" style="width:100%"></div></div>
+                    <span>3/3</span>
+                </div>
+
+                <div class="bar-row">
+                    <span>Guardrail Tests</span>
+                    <div class="bar"><div class="bar-fill" style="width:100%"></div></div>
+                    <span>12/12</span>
+                </div>
+
+                <div class="bar-row">
+                    <span>Codebase Verification</span>
+                    <div class="bar"><div class="bar-fill" style="width:100%"></div></div>
+                    <span>8/8</span>
+                </div>
+
+                <div class="bar-row">
+                    <span>Application Tests</span>
+                    <div class="bar"><div class="bar-fill" style="width:100%"></div></div>
+                    <span>5/5</span>
+                </div>
+            </div>
+
+            <p class="warning">
+                Grounded retrieval accuracy is based on 3 questions with defined
+                expected source documents. RAG analysis also included 2 cases where
+                no ground-truth source existed. These cases were not counted as
+                retrieval-accuracy passes.
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>RAG Analysis</h2>
+            <p>
+                The RAG pipeline was tested using relevant, out-of-scope, and
+                insufficient-information questions. The system uses top-4 vector
+                retrieval against the MediCore knowledge base.
+            </p>
+
+            <div class="metrics">
+                <div class="metric">
+                    <div class="metric-value">3/3</div>
+                    <div class="metric-label">Expected Sources Retrieved</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">5</div>
+                    <div class="metric-label">RAG Analysis Cases</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">4.47s</div>
+                    <div class="metric-label">Average Retrieval Latency</div>
+                </div>
+            </div>
+
+            <h3>Observed RAG Cases</h3>
+            <ul>
+                <li>
+                    <strong>Relevant retrieval:</strong>
+                    appointment, patient registration, and authentication questions
+                    retrieved their expected MediCore source documents.
+                </li>
+                <li>
+                    <strong>Out-of-scope:</strong>
+                    a Delhi weather question retrieved unrelated project documents,
+                    demonstrating why scope control is required.
+                </li>
+                <li>
+                    <strong>Insufficient information:</strong>
+                    a 2024 revenue question retrieved semantically related documents,
+                    but no source contained the requested revenue information.
+                </li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>RAG vs No-RAG</h2>
+            <p>
+                The same three MediCore questions were compared with and without
+                retrieved project context. Without RAG, no MediCore sources are
+                supplied to the generation stage. With RAG, the top-4 retrieved
+                sources provide project-specific context.
+            </p>
+
+            <div class="metrics">
+                <div class="metric">
+                    <div class="metric-value">3/3</div>
+                    <div class="metric-label">Expected Sources with RAG</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">0</div>
+                    <div class="metric-label">Sources without RAG</div>
+                </div>
+            </div>
+
+            <p class="warning">
+                This comparison measures retrieval/context availability. It does not
+                claim an LLM answer-accuracy improvement because a reliable full
+                generation comparison was not performed on the CPU-constrained VM.
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>Guardrail & AI Output Testing</h2>
+            <p>
+                MediCode includes input and output validation using Pydantic-based
+                guardrails. The test suite covers normal requests, prompt injection,
+                short input, long input, and invalid output cases.
+            </p>
+
+            <div class="metrics">
+                <div class="metric">
+                    <div class="metric-value">9/9</div>
+                    <div class="metric-label">Input Guardrail Tests</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">3/3</div>
+                    <div class="metric-label">Output Guardrail Tests</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">6</div>
+                    <div class="metric-label">AI Output Test Categories</div>
+                </div>
+            </div>
+
+            <p>
+                AI-output testing covers relevance, context support, unsupported
+                claims, expected format, sufficient information, and insufficient
+                information. The evaluator framework has been validated with
+                controlled test responses; these are framework checks rather than
+                new LLM-generation accuracy results.
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>Codebase Understanding</h2>
+            <p>
+                MediCode includes a fictional MediCore healthcare software codebase
+                containing API routes, services, models, authentication middleware,
+                and tests. Multi-file questions were used to verify relationships
+                between components.
+            </p>
+
+            <div class="metrics">
+                <div class="metric">
+                    <div class="metric-value">8/8</div>
+                    <div class="metric-label">Codebase Questions</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">100%</div>
+                    <div class="metric-label">Verification Rate</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">5/5</div>
+                    <div class="metric-label">Workflow Tests</div>
+                </div>
+            </div>
+
+            <p>
+                The verification covers code retrieval, dependency understanding,
+                bug analysis, and refactoring questions. The underlying deterministic
+                tests cover patient registration, duplicate prevention, appointment
+                double-booking prevention, billing, and role authorization.
+            </p>
+
+            <p class="warning">
+                Codebase verification checks the actual source files and deterministic
+                tests. It is not an LLM answer-accuracy score.
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>Model Evaluation Lab</h2>
+            <p>
+                MediCode supports evaluation of Qwen 2.5 Coder 3B, StarCoder2 3B,
+                and CodeLlama 7B using a common evaluation framework. The project
+                retains previously completed model-comparison results and separates
+                them from the newer MediCore retrieval and codebase experiments.
+            </p>
+
+            <p>
+                The evaluation framework covers explanation, code retrieval,
+                dependency understanding, bug analysis, code generation, refactoring,
+                and RAG-based questions.
+            </p>
+
+            <p class="warning">
+                Full new 28-question LLM generation evaluation was not rerun on this
+                CPU-constrained VM after RAG generation tests exceeded practical
+                execution limits. No new LLM accuracy figures are fabricated here.
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>MediCode AI — System Synopsis</h2>
+            <p>
+                This architecture diagram shows the complete flow from a developer
+                question to a grounded response using RAG, vector retrieval,
+                the MediCore knowledge base, local LLM inference, and guardrails.
+            </p>
+
+            <div class="synopsis-graph">
+                <svg viewBox="0 0 1100 650" role="img"
+                     aria-label="MediCode AI RAG system architecture">
+
+                    <defs>
+                        <marker id="arrow" markerWidth="10" markerHeight="10"
+                                refX="9" refY="3" orient="auto"
+                                markerUnits="strokeWidth">
+                            <path d="M0,0 L10,3 L0,6 Z" fill="#2563eb"/>
+                        </marker>
+                    </defs>
+
+                    <!-- Main pipeline -->
+                    <rect x="40" y="270" width="150" height="70" rx="12"
+                          class="graph-box"/>
+                    <text x="115" y="300" text-anchor="middle"
+                          class="graph-title">Developer</text>
+                    <text x="115" y="322" text-anchor="middle"
+                          class="graph-text">Technical Question</text>
+
+                    <line x1="190" y1="305" x2="250" y2="305"
+                          class="graph-line" marker-end="url(#arrow)"/>
+
+                    <rect x="250" y="270" width="150" height="70" rx="12"
+                          class="graph-box"/>
+                    <text x="325" y="300" text-anchor="middle"
+                          class="graph-title">Web Interface</text>
+                    <text x="325" y="322" text-anchor="middle"
+                          class="graph-text">MediCode AI</text>
+
+                    <line x1="400" y1="305" x2="460" y2="305"
+                          class="graph-line" marker-end="url(#arrow)"/>
+
+                    <rect x="460" y="270" width="150" height="70" rx="12"
+                          class="graph-box"/>
+                    <text x="535" y="300" text-anchor="middle"
+                          class="graph-title">FastAPI</text>
+                    <text x="535" y="322" text-anchor="middle"
+                          class="graph-text">Application API</text>
+
+                    <line x1="610" y1="305" x2="670" y2="305"
+                          class="graph-line" marker-end="url(#arrow)"/>
+
+                    <rect x="670" y="270" width="170" height="70" rx="12"
+                          class="graph-box"/>
+                    <text x="755" y="300" text-anchor="middle"
+                          class="graph-title">Input Guardrails</text>
+                    <text x="755" y="322" text-anchor="middle"
+                          class="graph-text">Validate Request</text>
+
+                    <line x1="840" y1="305" x2="900" y2="305"
+                          class="graph-line" marker-end="url(#arrow)"/>
+
+                    <rect x="900" y="270" width="160" height="70" rx="12"
+                          class="graph-box"/>
+                    <text x="980" y="300" text-anchor="middle"
+                          class="graph-title">Vector Search</text>
+                    <text x="980" y="322" text-anchor="middle"
+                          class="graph-text">Top-K Retrieval</text>
+
+                    <!-- Embedding model -->
+                    <rect x="885" y="90" width="190" height="70" rx="12"
+                          class="graph-box secondary"/>
+                    <text x="980" y="120" text-anchor="middle"
+                          class="graph-title">Embedding Model</text>
+                    <text x="980" y="142" text-anchor="middle"
+                          class="graph-text">nomic-embed-text</text>
+
+                    <line x1="980" y1="160" x2="980" y2="270"
+                          class="graph-line" marker-end="url(#arrow)"/>
+
+                    <!-- Knowledge base -->
+                    <rect x="685" y="430" width="250" height="90" rx="12"
+                          class="graph-box knowledge"/>
+                    <text x="810" y="462" text-anchor="middle"
+                          class="graph-title">MediCore Knowledge Base</text>
+                    <text x="810" y="485" text-anchor="middle"
+                          class="graph-text">5 documents • 17 chunks</text>
+                    <text x="810" y="505" text-anchor="middle"
+                          class="graph-text">Healthcare software docs</text>
+
+                    <line x1="980" y1="340" x2="810" y2="430"
+                          class="graph-line" marker-end="url(#arrow)"/>
+
+                    <!-- LLM -->
+                    <rect x="390" y="430" width="210" height="90" rx="12"
+                          class="graph-box llm"/>
+                    <text x="495" y="462" text-anchor="middle"
+                          class="graph-title">Local LLM</text>
+                    <text x="495" y="485" text-anchor="middle"
+                          class="graph-text">Qwen 2.5 Coder 3B</text>
+                    <text x="495" y="505" text-anchor="middle"
+                          class="graph-text">Grounded Generation</text>
+
+                    <line x1="810" y1="520" x2="600" y2="475"
+                          class="graph-line" marker-end="url(#arrow)"/>
+
+                    <!-- Output guardrail -->
+                    <rect x="150" y="430" width="190" height="90" rx="12"
+                          class="graph-box guard"/>
+                    <text x="245" y="462" text-anchor="middle"
+                          class="graph-title">Output Guardrails</text>
+                    <text x="245" y="485" text-anchor="middle"
+                          class="graph-text">Validate Response</text>
+                    <text x="245" y="505" text-anchor="middle"
+                          class="graph-text">Grounded Output</text>
+
+                    <line x1="390" y1="475" x2="340" y2="475"
+                          class="graph-line" marker-end="url(#arrow)"/>
+
+                    <!-- Final answer -->
+                    <rect x="40" y="90" width="210" height="90" rx="12"
+                          class="graph-box final-graph"/>
+                    <text x="145" y="122" text-anchor="middle"
+                          class="graph-title">Final Answer</text>
+                    <text x="145" y="145" text-anchor="middle"
+                          class="graph-text">Grounded Technical</text>
+                    <text x="145" y="165" text-anchor="middle"
+                          class="graph-text">Response</text>
+
+                    <line x1="245" y1="430" x2="145" y2="180"
+                          class="graph-line" marker-end="url(#arrow)"/>
+
+                    <!-- Labels -->
+                    <text x="945" y="390" class="graph-label">retrieve context</text>
+                    <text x="650" y="450" class="graph-label">grounding context</text>
+                    <text x="335" y="455" class="graph-label">generated response</text>
+
+                </svg>
+            </div>
+
+            <p class="warning">
+                Architecture shown for the MediCode technical developer-assistant
+                workflow. The knowledge base contains fictional healthcare software
+                documentation and is not used for medical diagnosis or patient advice.
+            </p>
         </div>
 
         <div class="card">

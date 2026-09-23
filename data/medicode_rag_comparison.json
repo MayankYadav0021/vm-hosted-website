@@ -1,0 +1,20 @@
+[
+  {
+    "id": "C01",
+    "question": "How does Appointment Management prevent double booking?",
+    "purpose": "Compare an answer without MediCore context against an answer grounded in retrieved appointment-management documentation.",
+    "expected_source": "medicode/appointment_management.md"
+  },
+  {
+    "id": "C02",
+    "question": "What information is required when registering a patient?",
+    "purpose": "Compare an answer without MediCore context against an answer grounded in retrieved patient-management documentation.",
+    "expected_source": "medicode/patient_management.md"
+  },
+  {
+    "id": "C03",
+    "question": "How does MediCore handle authentication and authorization?",
+    "purpose": "Compare an answer without MediCore context against an answer grounded in retrieved security documentation.",
+    "expected_source": "medicode/security_and_authentication.md"
+  }
+]

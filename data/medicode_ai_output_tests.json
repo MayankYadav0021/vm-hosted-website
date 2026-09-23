@@ -1,0 +1,38 @@
+[
+  {
+    "id": "A01",
+    "category": "relevance",
+    "question": "How does patient registration work?",
+    "expected_behavior": "Answer should directly address patient registration."
+  },
+  {
+    "id": "A02",
+    "category": "context_support",
+    "question": "What information is required during patient registration?",
+    "expected_behavior": "Answer should be supported by patient_management.md."
+  },
+  {
+    "id": "A03",
+    "category": "unsupported_claim",
+    "question": "What is the exact annual revenue of MediCore?",
+    "expected_behavior": "System should not invent a revenue figure because the knowledge base does not provide one."
+  },
+  {
+    "id": "A04",
+    "category": "expected_format",
+    "question": "List the main patient registration steps.",
+    "expected_behavior": "Answer should present the steps clearly as a list."
+  },
+  {
+    "id": "A05",
+    "category": "sufficient_information",
+    "question": "How does Appointment Management prevent double booking?",
+    "expected_behavior": "Answer should use the appointment management documentation."
+  },
+  {
+    "id": "A06",
+    "category": "insufficient_information",
+    "question": "What programming language was used to originally build MediCore?",
+    "expected_behavior": "System should state that the available context does not provide enough information."
+  }
+]

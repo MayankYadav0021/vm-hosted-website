@@ -1,0 +1,95 @@
+[
+  {
+    "id": "C01",
+    "question": "How does Appointment Management prevent double booking?",
+    "without_rag": {
+      "retrieved_context": false,
+      "source_count": 0
+    },
+    "with_rag": {
+      "retrieved_context": true,
+      "top_k": 4,
+      "expected_source_retrieved": true,
+      "sources": [
+        {
+          "source": "medicode/appointment_management.md",
+          "score": 0.6768
+        },
+        {
+          "source": "medicode/appointment_management.md",
+          "score": 0.6367
+        },
+        {
+          "source": "medicode/appointment_management.md",
+          "score": 0.6102
+        },
+        {
+          "source": "medicode/system_architecture.md",
+          "score": 0.5525
+        }
+      ]
+    }
+  },
+  {
+    "id": "C02",
+    "question": "What information is required when registering a patient?",
+    "without_rag": {
+      "retrieved_context": false,
+      "source_count": 0
+    },
+    "with_rag": {
+      "retrieved_context": true,
+      "top_k": 4,
+      "expected_source_retrieved": true,
+      "sources": [
+        {
+          "source": "medicode/patient_management.md",
+          "score": 0.8028
+        },
+        {
+          "source": "medicode/patient_management.md",
+          "score": 0.7845
+        },
+        {
+          "source": "medicode/patient_management.md",
+          "score": 0.7739
+        },
+        {
+          "source": "medicode/billing_management.md",
+          "score": 0.6946
+        }
+      ]
+    }
+  },
+  {
+    "id": "C03",
+    "question": "How does MediCore handle authentication and authorization?",
+    "without_rag": {
+      "retrieved_context": false,
+      "source_count": 0
+    },
+    "with_rag": {
+      "retrieved_context": true,
+      "top_k": 4,
+      "expected_source_retrieved": true,
+      "sources": [
+        {
+          "source": "medicode/security_and_authentication.md",
+          "score": 0.8803
+        },
+        {
+          "source": "medicode/patient_management.md",
+          "score": 0.7395
+        },
+        {
+          "source": "medicode/system_architecture.md",
+          "score": 0.7283
+        },
+        {
+          "source": "medicode/patient_management.md",
+          "score": 0.7065
+        }
+      ]
+    }
+  }
+]

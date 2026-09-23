@@ -1,0 +1,47 @@
+{
+  "project": "MediCode AI",
+  "dataset": "medicode_evaluation_dataset.json",
+  "total_questions": 28,
+  "evaluation_method": {
+    "same_questions_for_all_models": true,
+    "categories": [
+      "Explanation",
+      "Code Retrieval",
+      "Dependency Understanding",
+      "Bug Analysis",
+      "Code Generation",
+      "Refactoring",
+      "RAG-based Question"
+    ],
+    "metrics": [
+      "correctness",
+      "relevance",
+      "retrieval_quality",
+      "groundedness",
+      "hallucination_rate",
+      "code_test_pass_rate",
+      "response_latency",
+      "prompt_tokens",
+      "output_tokens",
+      "cpu_usage",
+      "memory_usage"
+    ]
+  },
+  "models": {
+    "qwen2.5-coder:3b": {
+      "status": "pending",
+      "results": [],
+      "summary": {}
+    },
+    "starcoder2:3b": {
+      "status": "pending",
+      "results": [],
+      "summary": {}
+    },
+    "codellama:7b": {
+      "status": "pending",
+      "results": [],
+      "summary": {}
+    }
+  }
+}

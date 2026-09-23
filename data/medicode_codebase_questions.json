@@ -1,0 +1,72 @@
+[
+  {
+    "id": "CB01",
+    "category": "Code Retrieval",
+    "question": "Which file contains the logic that prevents a doctor from being double-booked?",
+    "expected_files": [
+      "medicore_codebase/services/appointment_service.py"
+    ]
+  },
+  {
+    "id": "CB02",
+    "category": "Dependency Understanding",
+    "question": "Which API route calls PatientService to register a patient?",
+    "expected_files": [
+      "medicore_codebase/api/patient_routes.py",
+      "medicore_codebase/services/patient_service.py"
+    ]
+  },
+  {
+    "id": "CB03",
+    "category": "Dependency Understanding",
+    "question": "How does the patient registration flow connect the API route, service, and Patient model?",
+    "expected_files": [
+      "medicore_codebase/api/patient_routes.py",
+      "medicore_codebase/services/patient_service.py",
+      "medicore_codebase/models/patient.py"
+    ]
+  },
+  {
+    "id": "CB04",
+    "category": "Bug Analysis",
+    "question": "What happens if mark_invoice_paid is called with an invoice ID that does not exist?",
+    "expected_files": [
+      "medicore_codebase/services/billing_service.py",
+      "medicore_codebase/api/billing_routes.py"
+    ]
+  },
+  {
+    "id": "CB05",
+    "category": "Code Retrieval",
+    "question": "Where are the roles and their permissions defined?",
+    "expected_files": [
+      "medicore_codebase/middleware/auth.py"
+    ]
+  },
+  {
+    "id": "CB06",
+    "category": "Dependency Understanding",
+    "question": "Which files are involved when a doctor requests permission to read data?",
+    "expected_files": [
+      "medicore_codebase/middleware/auth.py",
+      "medicore_codebase/app.py"
+    ]
+  },
+  {
+    "id": "CB07",
+    "category": "Bug Analysis",
+    "question": "What error occurs when a duplicate patient ID is registered?",
+    "expected_files": [
+      "medicore_codebase/services/patient_service.py",
+      "medicore_codebase/tests/test_medicore.py"
+    ]
+  },
+  {
+    "id": "CB08",
+    "category": "Refactoring",
+    "question": "Which service should be modified if appointment storage changes from an in-memory list to a database?",
+    "expected_files": [
+      "medicore_codebase/services/appointment_service.py"
+    ]
+  }
+]

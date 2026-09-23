@@ -1,0 +1,32 @@
+[
+  {
+    "id": "R01",
+    "type": "relevant_retrieval",
+    "question": "How does Appointment Management prevent double booking?",
+    "expected_source": "medicode/appointment_management.md"
+  },
+  {
+    "id": "R02",
+    "type": "relevant_retrieval",
+    "question": "What information is required when registering a patient?",
+    "expected_source": "medicode/patient_management.md"
+  },
+  {
+    "id": "R03",
+    "type": "relevant_retrieval",
+    "question": "How does MediCore handle authentication and authorization?",
+    "expected_source": "medicode/security_and_authentication.md"
+  },
+  {
+    "id": "R04",
+    "type": "out_of_scope",
+    "question": "What is the weather in Delhi today?",
+    "expected_source": null
+  },
+  {
+    "id": "R05",
+    "type": "insufficient_information",
+    "question": "What was MediCore's revenue in 2024?",
+    "expected_source": null
+  }
+]

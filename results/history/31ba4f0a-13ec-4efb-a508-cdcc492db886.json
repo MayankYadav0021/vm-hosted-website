@@ -1,0 +1,13 @@
+{
+  "id": "31ba4f0a-13ec-4efb-a508-cdcc492db886",
+  "experiment": "phase1",
+  "model": "microsoft/DialoGPT-small",
+  "status": "completed",
+  "message": "Experiment finished successfully.",
+  "created_at": "2026-11-15T16:23:43.137824+00:00",
+  "updated_at": "2026-11-15T16:23:57.862479+00:00",
+  "started_at": "2026-11-15T16:23:43.138371+00:00",
+  "finished_at": "2026-11-15T16:23:57.862461+00:00",
+  "exit_code": 0,
+  "log_file": "logs/experiment_31ba4f0a-13ec-4efb-a508-cdcc492db886.log"
+}

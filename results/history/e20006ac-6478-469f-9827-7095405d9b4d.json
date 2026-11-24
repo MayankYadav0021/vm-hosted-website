@@ -1,0 +1,13 @@
+{
+  "id": "e20006ac-6478-469f-9827-7095405d9b4d",
+  "experiment": "phase3_lora",
+  "model": "distilbert/distilgpt2",
+  "status": "completed",
+  "message": "Experiment finished successfully.",
+  "created_at": "2026-11-24T17:51:21.336427+00:00",
+  "updated_at": "2026-11-24T17:51:39.911092+00:00",
+  "started_at": "2026-11-24T17:51:21.336864+00:00",
+  "finished_at": "2026-11-24T17:51:39.911075+00:00",
+  "exit_code": 0,
+  "log_file": "logs/experiment_e20006ac-6478-469f-9827-7095405d9b4d.log"
+}

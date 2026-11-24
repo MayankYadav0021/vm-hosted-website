@@ -1,66 +1,36 @@
-# CodeBase RAG Assistant — Weeks 1–4
+# AI-DevOps-Project
 
-One continuous application for the lab.
+## LLM Performance Research Dashboard
 
-## Week 1
-`week1_site/index.html` is the static website to host with Apache on the VM. Use Git/GitHub to commit and push updates.
+An AWS-hosted platform for benchmarking Large Language Models (LLMs), evaluating CPU inference, precision optimization, batching, and LoRA fine-tuning.
 
-## Week 2
-`week2/run_ollama.py` demonstrates sending a prompt to Code Llama through Ollama.
+## Features
+- Multi-model CPU benchmarking
+- Inference time, throughput and RAM analysis
+- FP32 and FP16 precision comparison
+- Batch-size performance analysis
+- LoRA fine-tuning
+- Interactive HTML, CSS and JavaScript dashboard
+- FastAPI backend and experiment history
+- Live AWS EC2 resource monitoring
 
-## Week 3
-FastAPI + Ollama + Code Llama + knowledge base + chunking + Ollama embeddings + cosine similarity + retrieval + RAG + service separation + Docker.
+## Technology Stack
+Python, FastAPI, PyTorch, Transformers, PEFT, Pandas, NumPy, Matplotlib, HTML, CSS, JavaScript, AWS EC2, Ubuntu and Nginx.
 
-## Week 4
-Three-model evaluation, 25 representative questions, latency/token/memory measurements, retrieval-quality analysis, RAG vs direct comparison, and multi-file/repository-style questions.
+## Project Structure
+- app/: Backend and frontend
+- phase1_cpu/: Model benchmarking
+- phase2_cpu/: Precision and batching
+- phase3_lora/: LoRA fine-tuning
+- models/: Fine-tuned adapter
+- results/: Benchmark outputs
+- figures/: Performance charts
 
-## Setup
-```bash
-python -m venv .venv
-# Windows PowerShell:
-.\.venv\Scripts\Activate.ps1
-# Linux:
-source .venv/bin/activate
-pip install -r requirements.txt
-```
+## Run Locally
+Install dependencies using pip install -r requirements.txt, then run uvicorn app.backend.main:app --host 127.0.0.1 --port 8000.
 
-Start Ollama separately:
-```bash
-ollama serve
-ollama pull codellama:7b
-ollama pull starcoder2:3b
-ollama pull qwen2.5-coder:3b
-ollama pull nomic-embed-text
-```
+## AWS Deployment
+Deployed on Ubuntu AWS EC2 using FastAPI, systemd and Nginx. Dashboard access is provided through an SSH tunnel.
 
-Configure:
-```bash
-# Windows
-copy .env.example .env
-# Linux
-cp .env.example .env
-```
-
-Index:
-```bash
-python scripts/ingest.py
-```
-
-Run API:
-```bash
-uvicorn app.main:app --reload
-```
-
-Open `http://127.0.0.1:8000/docs`.
-
-Evaluate:
-```bash
-python scripts/evaluate_models.py
-python scripts/analyze_rag.py
-```
-
-## Week 4 metric definitions
-Correctness/relevance are keyword-based proxies and should be manually validated for the final report. Retrieval quality is the fraction of expected source files found in top-k. Hallucination is a simple zero-keyword flag and must be manually reviewed. Test-pass rate should be measured separately for generated-code questions by running generated tests. Latency is wall-clock time. Token usage comes from Ollama prompt/eval counts. Memory is process RSS delta.
-
-## Presentation
-Show `/docs`, a RAG response with retrieved sources, the model comparison CSV, the RAG analysis JSON, and a multi-file question.
+## Results
+Benchmark CSV and JSON files are stored in results/, charts in figures/, and the LoRA adapter in models/phase3_lora/adapter/.

@@ -1,0 +1,2 @@
+timestamp,model,device,method,status,error,epochs,learning_rate,training_examples,evaluation_prompts,adapter_rank,adapter_alpha,trainable_parameters,total_parameters,trainable_parameter_percent,training_time_sec,evaluation_time_sec,avg_generation_time_sec,peak_process_ram_gb,initial_process_ram_gb,total_runtime_sec,adapter_path
+2026-11-24T17:51:28.079894+00:00,distilbert/distilgpt2,cpu,LoRA,success,,2,0.0002,8,3,4,8,73728,81986304,0.0899,6.589,2.211,0.7365,1.3209,0.7944,10.679,models/phase3_lora/adapter

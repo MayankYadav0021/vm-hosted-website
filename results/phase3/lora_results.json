@@ -1,0 +1,43 @@
+{
+  "timestamp": "2026-11-24T17:51:28.079894+00:00",
+  "model": "distilbert/distilgpt2",
+  "device": "cpu",
+  "method": "LoRA",
+  "status": "success",
+  "error": "",
+  "epochs": 2,
+  "learning_rate": 0.0002,
+  "training_examples": 8,
+  "evaluation_prompts": 3,
+  "adapter_rank": 4,
+  "adapter_alpha": 8,
+  "trainable_parameters": 73728,
+  "total_parameters": 81986304,
+  "trainable_parameter_percent": 0.0899,
+  "training_time_sec": 6.589,
+  "evaluation_time_sec": 2.211,
+  "avg_generation_time_sec": 0.7365,
+  "peak_process_ram_gb": 1.3209,
+  "initial_process_ram_gb": 0.7944,
+  "adapter_path": "models/phase3_lora/adapter",
+  "evaluation_outputs": [
+    {
+      "prompt": "What is AI?",
+      "generated_text": "AI is a system that is designed to be used to solve problems in the real world. It is a system that is",
+      "generation_time_sec": 0.7354
+    },
+    {
+      "prompt": "What is LoRA?",
+      "generated_text": "LoRA is a simple, simple, and simple, and simple, and simple, and simple, and simple, and",
+      "generation_time_sec": 0.7422
+    },
+    {
+      "prompt": "What is cloud computing?",
+      "generated_text": "Cloud computing is a new technology that is being developed by companies like Google, Microsoft, and Microsoft. It is a new",
+      "generation_time_sec": 0.7317
+    }
+  ],
+  "total_runtime_sec": 10.679,
+  "python_version": "3.12.3",
+  "torch_version": "2.14.1+cu130"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "98c92536-cf9c-4810-a90b-aa55a26a3f87",
+  "experiment": "phase1",
+  "model": "distilbert/distilgpt2",
+  "status": "completed",
+  "message": "Experiment finished successfully.",
+  "created_at": "2026-11-15T16:24:32.340882+00:00",
+  "updated_at": "2026-11-15T16:24:56.941371+00:00",
+  "started_at": "2026-11-15T16:24:32.341321+00:00",
+  "finished_at": "2026-11-15T16:24:56.941353+00:00",
+  "exit_code": 0,
+  "log_file": "logs/experiment_98c92536-cf9c-4810-a90b-aa55a26a3f87.log"
+}

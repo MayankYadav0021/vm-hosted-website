@@ -1,0 +1,22 @@
+[
+  {
+    "model": "microsoft/DialoGPT-small",
+    "size_category": "tiny",
+    "architecture": "causal",
+    "status": "success",
+    "error": "",
+    "parameters": 124439808,
+    "parameters_millions": 124.439808,
+    "estimated_fp32_size_gb": 0.4635744094848633,
+    "load_time_sec": 0.7093083281069994,
+    "ram_after_load_gb": 1.2974624633789062,
+    "total_requests": 13,
+    "successful_requests": 13,
+    "avg_inference_time_sec": 0.2886815029375542,
+    "avg_tokens_per_sec": 13.921145901633647,
+    "total_output_tokens": 66,
+    "avg_output_tokens": 5.076923076923077,
+    "peak_ram_gb": 1.3112907409667969,
+    "avg_ram_delta_gb": 0.0010637136606069712
+  }
+]

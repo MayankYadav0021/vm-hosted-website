@@ -1,0 +1,22 @@
+[
+  {
+    "model": "distilbert/distilgpt2",
+    "size_category": "tiny",
+    "architecture": "causal",
+    "status": "success",
+    "error": "",
+    "parameters": 81912576,
+    "parameters_millions": 81.912576,
+    "estimated_fp32_size_gb": 0.3051481246948242,
+    "load_time_sec": 0.35819502593949437,
+    "ram_after_load_gb": 0.8618202209472656,
+    "total_requests": 13,
+    "successful_requests": 13,
+    "avg_inference_time_sec": 1.1052562408865645,
+    "avg_tokens_per_sec": 32.501779375996406,
+    "total_output_tokens": 473,
+    "avg_output_tokens": 36.38461538461539,
+    "peak_ram_gb": 1.1752586364746094,
+    "avg_ram_delta_gb": 0.02411064734825721
+  }
+]

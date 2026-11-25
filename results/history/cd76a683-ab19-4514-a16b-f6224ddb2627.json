@@ -1,0 +1,31 @@
+{
+  "id": "cd76a683-ab19-4514-a16b-f6224ddb2627",
+  "phase": "phase2_batching",
+  "experiment": "Batching Optimization",
+  "model": "distilbert/distilgpt2",
+  "status": "completed",
+  "message": "Experiment completed successfully.",
+  "created_at": "2026-11-25T00:21:08.422049+00:00",
+  "updated_at": "2026-11-25T00:21:24.645286+00:00",
+  "started_at": "2026-11-25T00:21:08.425044+00:00",
+  "finished_at": "2026-11-25T00:21:24.645270+00:00",
+  "exit_code": null,
+  "log_file": "logs/experiment_cd76a683-ab19-4514-a16b-f6224ddb2627.log",
+  "tests": [
+    {
+      "name": "Batching Optimization",
+      "phase": "phase2_batching",
+      "status": "completed",
+      "exit_code": 0,
+      "result_files": [
+        "results/experiment_details/cd76a683-ab19-4514-a16b-f6224ddb2627/test_1/logs/phase2_batching.log",
+        "results/experiment_details/cd76a683-ab19-4514-a16b-f6224ddb2627/test_1/results/batching_results.csv"
+      ]
+    }
+  ],
+  "result_files": [
+    "results/experiment_details/cd76a683-ab19-4514-a16b-f6224ddb2627/test_1/logs/phase2_batching.log",
+    "results/experiment_details/cd76a683-ab19-4514-a16b-f6224ddb2627/test_1/results/batching_results.csv"
+  ],
+  "additional_tests_supported": false
+}

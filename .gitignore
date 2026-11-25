@@ -1,16 +1,30 @@
+# Secrets and environment files
 .env
 .env.*
 !.env.example
+*.pem
+
+# Python environments and cache
 .venv/
 venv/
 __pycache__/
 *.py[cod]
+.ipynb_checkpoints/
+
+# Logs and local backups
+logs/
+backups/
+*.bak
+*.bak*
 *.backup
+*.before-*
 *.before_*
+*.pre-*
+*.pre_*
 *_backup*
 *_before_*
 *_pre_*
-backups/
-logs/
-*.pem
-.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db

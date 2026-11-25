@@ -1,0 +1,234 @@
+model,size_category,architecture,workload,request_id,prompt,inference_time_sec,input_tokens,output_tokens,tokens_per_sec,ram_before_inference_gb,ram_after_inference_gb,ram_delta_gb,generated_text
+distilbert/distilgpt2,tiny,causal,chat_conversation,1,Hello! How are you today?,1.2198998942039907,7,40,32.789575759493616,0.8618202209472656,1.1748695373535156,0.31304931640625,"Hello! How are you today?
+
+
+We have been doing our best to have this project running in 4-5 months, so you can see it now all in action!
+I’m going to be doing my"
+distilbert/distilgpt2,tiny,causal,chat_conversation,2,What is artificial intelligence?,1.2186767822131515,5,40,32.82248466846055,1.1748695373535156,1.1748924255371094,2.288818359375e-05,"What is artificial intelligence?”
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"
+distilbert/distilgpt2,tiny,causal,chat_conversation,3,Can you explain machine learning simply?,0.20895352121442556,7,6,28.71451969379771,1.1748924255371094,1.174896240234375,3.814697265625e-06,Can you explain machine learning simply? What are your questions?
+distilbert/distilgpt2,tiny,causal,chat_conversation,4,What are the benefits of automation?,1.2129046469926834,7,40,32.97868476238206,1.174896240234375,1.1749191284179688,2.288818359375e-05,"What are the benefits of automation?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"
+distilbert/distilgpt2,tiny,causal,chat_conversation,5,Tell me something interesting about technology.,1.2141216872259974,7,40,32.94562680236052,1.1749191284179688,1.1749534606933594,3.4332275390625e-05,"Tell me something interesting about technology.‬
+What‬?‬
+What‬?‬
+What‬?‬
+What‬?‬
+What‬?‬
+What�"
+distilbert/distilgpt2,tiny,causal,content_generation,1,Write a short paragraph about the future of technology.,1.5191786997020245,10,50,32.91252043607979,1.1749534606933594,1.175201416015625,0.000247955322265625,"Write a short paragraph about the future of technology.
+
+This is the part where you can use the words ""The future of technology will be different in the long run.""
+Today, you can use the word ""The future of technology will be different in the long run.""
+The way you"
+distilbert/distilgpt2,tiny,causal,content_generation,2,Create a brief description of artificial intelligence.,1.5091686029918492,8,50,33.1308244160908,1.175201416015625,1.1752395629882812,3.814697265625e-05,"Create a brief description of artificial intelligence. We are not going to get to all details of how the artificial intelligence has played out, but we wish we could spend some time with the human being.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"
+distilbert/distilgpt2,tiny,causal,content_generation,3,Write a short introduction to cloud computing.,0.44271738268435,8,14,31.622883011986367,1.1752395629882812,1.1752510070800781,1.1444091796875e-05,"Write a short introduction to cloud computing.
+
+
+
+
+This article originally appeared on the Internet."
+distilbert/distilgpt2,tiny,causal,content_generation,4,Explain why automation is important for businesses.,0.41233761701732874,9,13,31.527562520335533,1.1752510070800781,1.1752548217773438,3.814697265625e-06,"Explain why automation is important for businesses.
+
+
+
+
+
+Follow CNBC on Twitter and Facebook"
+distilbert/distilgpt2,tiny,causal,technical_qa,1,What is a neural network?,1.3542137648910284,6,45,33.22961349726133,1.1752548217773438,1.1752548217773438,0.0,"What is a neural network? It's a network that works to make a difference in the world. That's why it's the biggest story of the year.
+
+
+
+
+The first thing you'll notice is that the team of scientists are so"
+distilbert/distilgpt2,tiny,causal,technical_qa,2,Explain the difference between AI and machine learning.,1.3535471558570862,10,45,33.24597876422364,1.1752548217773438,1.1752586364746094,3.814697265625e-06,"Explain the difference between AI and machine learning.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"
+distilbert/distilgpt2,tiny,causal,technical_qa,3,What is a transformer model?,1.3472261722199619,6,45,33.40196392254532,1.1752586364746094,1.1752586364746094,0.0,"What is a transformer model? It doesn't matter what you're doing, it's what you want. In this case, the power is controlled by the transformer.
+
+
+That's the question: What do you do with that power? What happens"
+distilbert/distilgpt2,tiny,causal,technical_qa,4,What is the purpose of a database?,1.3553852043114603,8,45,33.20089363293599,1.1752586364746094,1.1752586364746094,0.0,"What is the purpose of a database?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"

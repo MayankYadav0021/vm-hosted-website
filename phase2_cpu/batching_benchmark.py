@@ -10,8 +10,8 @@ import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 ROOT = Path(__file__).resolve().parents[1]
-RESULTS = ROOT / "results" / "phase2"
-LOGS = ROOT / "logs"
+RESULTS = Path(os.environ.get("AI_DEVOPS_RESULTS_DIR", str(ROOT / "results" / "phase2")))
+LOGS = Path(os.environ.get("AI_DEVOPS_LOG_DIR", str(ROOT / "logs")))
 
 RESULTS.mkdir(parents=True, exist_ok=True)
 LOGS.mkdir(parents=True, exist_ok=True)
@@ -68,7 +68,7 @@ def append_result(row):
         writer.writerow(row)
 
 
-def run_batch(model, tokenizer, batch_size):
+def run_batch(model, tokenizer, batch_size, load_time_sec):
     process = psutil.Process(os.getpid())
 
     row = {
@@ -79,7 +79,7 @@ def run_batch(model, tokenizer, batch_size):
         "batch_size": batch_size,
         "status": "failed",
         "error": "",
-        "load_time_sec": "",
+        "load_time_sec": round(load_time_sec, 6),
         "avg_batch_latency_sec": "",
         "total_inference_time_sec": "",
         "total_output_tokens": 0,
@@ -214,7 +214,7 @@ def main():
                 log("Stopping because available RAM is below 0.8 GiB.")
                 break
 
-            run_batch(model, tokenizer, batch_size)
+            run_batch(model, tokenizer, batch_size, load_time)
 
     finally:
         del model

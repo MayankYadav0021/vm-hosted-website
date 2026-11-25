@@ -25,8 +25,8 @@ from transformers import AutoTokenizer, AutoModelForCausalLM, AutoModelForSeq2Se
 # ============================================================
 
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-RESULTS_DIR = os.path.join(PROJECT_ROOT, "results")
-FIGURES_DIR = os.path.join(PROJECT_ROOT, "figures")
+RESULTS_DIR = os.environ.get("AI_DEVOPS_RESULTS_DIR", os.path.join(PROJECT_ROOT, "results"))
+FIGURES_DIR = os.environ.get("AI_DEVOPS_FIGURES_DIR", os.path.join(PROJECT_ROOT, "figures"))
 
 os.makedirs(RESULTS_DIR, exist_ok=True)
 os.makedirs(FIGURES_DIR, exist_ok=True)
@@ -246,7 +246,7 @@ def benchmark_model(model_name):
         print(f"Model loading time: {load_time:.2f} sec")
 
         result.update({
-            "status": "success",
+            "status": "running",
             "parameters": parameters,
             "parameters_millions": parameters / 1e6,
             "estimated_fp32_size_gb": estimated_size,
@@ -392,6 +392,12 @@ def benchmark_model(model_name):
                     "ram_delta_gb"
                 ].mean()
             )
+
+            if result["successful_requests"] > 0:
+                result["status"] = "success"
+            else:
+                result["status"] = "failed"
+                result["error"] = "All inference requests failed."
 
         model_df.to_csv(
             os.path.join(

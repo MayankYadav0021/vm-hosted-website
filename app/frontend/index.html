@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI-DevOps | LLM Benchmarking Research</title>
+    <title>AI-DevOps | Model Performance Platform</title>
     <link rel="stylesheet" href="css/style.css?v=20261115-final1">
 </head>
 
@@ -20,14 +20,12 @@
         </div>
 
         <nav>
-            <button class="nav-item active" data-section="overview">About</button>
+            <button class="nav-item active" data-section="overview">Dashboard</button>
             <button class="nav-item" data-section="methodology">Architecture</button>
-            <button class="nav-item" data-section="phase1">Benchmarking</button>
-            <button class="nav-item" data-section="phase2">Optimization</button>
-            <button class="nav-item" data-section="phase3">Fine-Tuning</button>
-            <button class="nav-item" data-section="live-lab">Live Lab</button>
+            <button class="nav-item" data-section="phase1">Experiments</button>
+            <button class="nav-item" data-section="live-lab">Live Monitoring</button>
+            <button class="nav-item" data-section="advisor">AI Model Advisor</button>
             <button class="nav-item" data-section="results">Results</button>
-            <button class="nav-item" data-section="conclusion">Conclusion</button>
         </nav>
 
         <div class="sidebar-bottom">
@@ -44,7 +42,7 @@
 
             <div>
                 <p class="eyebrow">AI / MACHINE LEARNING / DEVOPS</p>
-                <h1>LLM Performance Research</h1>
+                <h1>AI-DevOps Platform</h1>
             </div>
 
             <div class="environment">
@@ -57,587 +55,176 @@
 
         <!-- ABOUT THE RESEARCH -->
         <section id="overview" class="page-section active-section">
-
-            <div class="hero">
-                <div class="hero-text">
-                    <p class="section-label">ARTIFICIAL INTELLIGENCE · SYSTEMS RESEARCH</p>
-
-                    <h2>
-                        Understanding and Optimizing
-                        <span>Large Language Model Performance</span>
-                    </h2>
-
-                    <p class="hero-description">
-                        An experimental study of language-model inference,
-                        computational efficiency and parameter-efficient
-                        fine-tuning, evaluated in a CPU-based cloud environment.
-                    </p>
-
-                    <button class="primary-button"
-                            onclick="showSection('phase1')">
-                        Explore the Research →
-                    </button>
-                </div>
-
-                <div class="hero-visual">
-                    <div class="visual-card">
-                        <div class="visual-header">
-                            <span>RESEARCH WORKFLOW</span>
-                            <span>AI / ML</span>
-                        </div>
-                        <div class="pipeline">
-                            <div class="pipeline-node">
-                                <strong>Models</strong>
-                                <small>Selection</small>
-                            </div>
-                            <div class="pipeline-line"></div>
-                            <div class="pipeline-node">
-                                <strong>Inference</strong>
-                                <small>Benchmarking</small>
-                            </div>
-                            <div class="pipeline-line"></div>
-                            <div class="pipeline-node">
-                                <strong>Optimization</strong>
-                                <small>Efficiency</small>
-                            </div>
-                            <div class="pipeline-line"></div>
-                            <div class="pipeline-node">
-                                <strong>Analysis</strong>
-                                <small>Evaluation</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="content-card">
-                <p class="section-label">ABOUT THE PROJECT</p>
-                <h2>Research Overview</h2>
-                <p>
-                    Large Language Models differ significantly in their
-                    computational requirements and inference behaviour.
-                    Deploying these models in resource-constrained
-                    environments requires an understanding of throughput,
-                    latency, memory consumption and optimization techniques.
-                </p>
-                <p>
-                    This project develops an experimental benchmarking
-                    environment to evaluate multiple language models,
-                    investigate inference optimization strategies and
-                    demonstrate parameter-efficient fine-tuning.
-                    Experiments are conducted on CPU-based AWS EC2
-                    infrastructure, with results recorded for comparison.
-                </p>
-            </div>
-
-            <div class="content-card">
-                <p class="section-label">RESEARCH MOTIVATION</p>
-                <h2>Problem Statement</h2>
-                <p>
-                    Running language models efficiently on limited
-                    computational resources presents challenges involving
-                    model size, inference speed and memory requirements.
-                    This research investigates how model selection,
-                    numerical precision, batch processing and
-                    parameter-efficient adaptation affect these constraints.
-                </p>
-            </div>
-
-            <div class="content-card">
-                <p class="section-label">RESEARCH OBJECTIVES</p>
-                <h2>What This Study Evaluates</h2>
-                <div class="optimization-grid">
-                    <div>
-                        <h3>Model Performance</h3>
-                        <p>Measure inference speed, model size, memory use and successful requests.</p>
-                    </div>
-                    <div>
-                        <h3>Inference Efficiency</h3>
-                        <p>Study FP32, FP16 and different batch sizes.</p>
-                    </div>
-                    <div>
-                        <h3>Model Adaptation</h3>
-                        <p>Evaluate a CPU-based LoRA fine-tuning experiment.</p>
-                    </div>
-                    <div>
-                        <h3>Cloud Deployment</h3>
-                        <p>Expose the research platform and monitor its AWS infrastructure.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="live-api-panel">
-                <span id="api-status">Connecting to benchmark API...</span>
-                <span id="last-updated"></span>
-            </div>
-
-            <div id="live-overview-metrics" class="live-metrics-grid"></div>
-
-            <h2>Recorded Model Throughput</h2>
-            <canvas id="live-phase1-chart" class="live-chart"
-                    aria-label="Model throughput comparison"></canvas>
-
-        </section>
+<div class="page-heading">
+<div>
+<p class="section-label">PLATFORM DASHBOARD</p>
+<h2>Model Performance Dashboard</h2>
+<p>Monitor experiments, model performance and AWS infrastructure.</p>
+</div>
+<button class="primary-button" onclick="showSection('phase1')">Open Experiments →</button>
+</div>
+<div class="live-api-panel">
+<span id="api-status">Connecting to benchmark API...</span>
+<span id="last-updated"></span>
+</div>
+<div id="live-overview-metrics" class="live-metrics-grid"></div>
+<div class="content-card">
+<h3>Model Throughput</h3>
+<canvas id="live-phase1-chart" class="live-chart" aria-label="Model throughput chart"></canvas>
+</div>
+</section>
 
 <section id="methodology" class="page-section">
+    <div class="page-heading">
+        <div>
+            <p class="section-label">PLATFORM DESIGN</p>
+            <h2>System Architecture</h2>
+            <p>Technology powering the model performance platform.</p>
+        </div>
+    </div>
 
-            <div class="page-heading">
-                <div>
-                    <p class="section-label">SYSTEM DESIGN</p>
-                    <h2>System Architecture</h2>
-                    <p>
-                        Experimental workflow and infrastructure used
-                        to evaluate and deploy the benchmarking platform.
-                    </p>
-                </div>
-            </div>
-
-            <div class="content-card">
-                <h3>Research Workflow</h3>
-
-                <div class="methodology-flow">
-                    <div class="method-node">
-                        <span>01</span>
-                        <h3>Model Selection</h3>
-                        <p>Pre-trained language models</p>
-                    </div>
-                    <div class="method-arrow">→</div>
-                    <div class="method-node">
-                        <span>02</span>
-                        <h3>Inference</h3>
-                        <p>Controlled workloads</p>
-                    </div>
-                    <div class="method-arrow">→</div>
-                    <div class="method-node">
-                        <span>03</span>
-                        <h3>Measurement</h3>
-                        <p>Latency, throughput and RAM</p>
-                    </div>
-                    <div class="method-arrow">→</div>
-                    <div class="method-node">
-                        <span>04</span>
-                        <h3>Optimization</h3>
-                        <p>Precision and batching</p>
-                    </div>
-                    <div class="method-arrow">→</div>
-                    <div class="method-node">
-                        <span>05</span>
-                        <h3>Analysis</h3>
-                        <p>Recorded comparisons</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="content-card">
-                <h3>Technology Stack</h3>
-                <div class="environment-grid">
-                    <div><span>Programming</span><strong>Python</strong></div>
-                    <div><span>Deep Learning</span><strong>PyTorch</strong></div>
-                    <div><span>Model Framework</span><strong>Transformers</strong></div>
-                    <div><span>Fine-Tuning</span><strong>PEFT / LoRA</strong></div>
-                    <div><span>Backend API</span><strong>FastAPI</strong></div>
-                    <div><span>Monitoring</span><strong>psutil</strong></div>
-                    <div><span>Cloud Platform</span><strong>AWS EC2</strong></div>
-                    <div><span>Web Server</span><strong>Nginx</strong></div>
-                </div>
-            </div>
-
-            <div class="content-card">
-                <h3>Deployment Environment</h3>
-                <p>
-                    The benchmarking API runs on an Ubuntu-based AWS EC2
-                    instance. Nginx acts as the public-facing web server
-                    and reverse proxy, forwarding requests to the FastAPI
-                    application. The frontend retrieves experiment results
-                    and live infrastructure metrics through API endpoints.
-                </p>
-
-                <div class="environment-grid">
-                    <div><span>Cloud</span><strong>AWS EC2</strong></div>
-                    <div><span>Operating System</span><strong>Ubuntu 24.04</strong></div>
-                    <div><span>CPU</span><strong>2 vCPU</strong></div>
-                    <div><span>Memory</span><strong>3.72 GB</strong></div>
-                    <div><span>GPU</span><strong>Not available</strong></div>
-                    <div><span>API Server</span><strong>FastAPI / Uvicorn</strong></div>
-                </div>
-            </div>
-
-        </section>
+    <div class="content-card">
+        <h3>Technology Stack</h3>
+        <div class="environment-grid">
+            <div><span>Frontend</span><strong>HTML, CSS, JavaScript</strong></div>
+            <div><span>Backend</span><strong>Python / FastAPI</strong></div>
+            <div><span>Machine Learning</span><strong>PyTorch</strong></div>
+            <div><span>Model Framework</span><strong>Hugging Face Transformers</strong></div>
+            <div><span>Fine-Tuning</span><strong>PEFT / LoRA</strong></div>
+            <div><span>Monitoring</span><strong>psutil</strong></div>
+            <div><span>Cloud</span><strong>AWS EC2 / Ubuntu</strong></div>
+            <div><span>Web Server</span><strong>Nginx</strong></div>
+        </div>
+    </div>
+</section>
 
 <section id="phase1" class="page-section">
-            <h2>Live Phase 1 Benchmark Results</h2>
-            <div id="live-phase1-table" class="live-table-wrap"></div>
-        
-
-            <div class="page-heading">
-
-                <div>
-                    <p class="section-label">PHASE 01</p>
-
-                    <h2>Model Performance Benchmarking</h2>
-
-                    <p>
-                        Evaluate model characteristics and performance
-                        across realistic workloads.
-                    </p>
-                </div>
-
-                <span class="completed-badge">
-                    ✓ COMPLETED
-                </span>
-
-            </div>
-
-
-            <div class="tabs">
-
-                <button class="tab active-tab"
-                        onclick="showPhase1Tab('models')">
-                    Model Analysis
-                </button>
-
-                <button class="tab"
-                        onclick="showPhase1Tab('workloads')">
-                    Workload Simulation
-                </button>
-
-                <button class="tab"
-                        onclick="showPhase1Tab('comparison')">
-                    Performance Comparison
-                </button>
-
-            </div>
-
-
-            <div id="phase1-models" class="phase1-content">
-
-                <div class="content-card">
-
-                    <div class="card-heading">
-
-                        <div>
-                            <p class="section-label">MODEL PORTFOLIO</p>
-                            <h3>Benchmarked Models</h3>
-                        </div>
-
-                    </div>
-
-
-                    <div class="table-wrapper">
-
-                        <table>
-
-                            <thead>
-                                <tr>
-                                    <th>Model</th>
-                                    <th>Parameters</th>
-                                    <th>Category</th>
-                                    <th>Architecture</th>
-                                    <th>Peak RAM</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-
-                                <tr>
-                                    <td>distilgpt2</td>
-                                    <td>81.91M</td>
-                                    <td>Tiny</td>
-                                    <td>Causal</td>
-                                    <td>1.19 GB</td>
-                                </tr>
-
-                                <tr>
-                                    <td>DialoGPT-small</td>
-                                    <td>124.44M</td>
-                                    <td>Tiny</td>
-                                    <td>Causal</td>
-                                    <td>1.35 GB</td>
-                                </tr>
-
-                                <tr>
-                                    <td>DialoGPT-medium</td>
-                                    <td>354.82M</td>
-                                    <td>Small</td>
-                                    <td>Causal</td>
-                                    <td>3.08 GB</td>
-                                </tr>
-
-                            </tbody>
-
-                        </table>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div id="phase1-workloads"
-                 class="phase1-content hidden">
-
-                <div class="workload-grid">
-
-                    <div class="workload-card">
-
-                        <div class="workload-icon">💬</div>
-
-                        <h3>Chat Conversation</h3>
-
-                        <p>
-                            Conversational prompts used to measure
-                            response generation performance.
-                        </p>
-
-                        <strong>5 requests / model</strong>
-
-                    </div>
-
-
-                    <div class="workload-card">
-
-                        <div class="workload-icon">📝</div>
-
-                        <h3>Content Generation</h3>
-
-                        <p>
-                            Text generation workloads representing
-                            content creation tasks.
-                        </p>
-
-                        <strong>4 requests / model</strong>
-
-                    </div>
-
-
-                    <div class="workload-card">
-
-                        <div class="workload-icon">🔧</div>
-
-                        <h3>Technical Q&A</h3>
-
-                        <p>
-                            Technical questions used to evaluate
-                            generation behaviour.
-                        </p>
-
-                        <strong>4 requests / model</strong>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div id="phase1-comparison"
-                 class="phase1-content hidden">
-
-                <div class="comparison-grid">
-
-                    <div class="metric-card">
-
-                        <span>distilgpt2</span>
-
-                        <h3>36.21</h3>
-
-                        <small>tokens / second</small>
-
-                        <div class="metric-bar">
-                            <div style="width:100%"></div>
-                        </div>
-
-                    </div>
-
-
-                    <div class="metric-card">
-
-                        <span>DialoGPT-small</span>
-
-                        <h3>14.45</h3>
-
-                        <small>tokens / second</small>
-
-                        <div class="metric-bar">
-                            <div style="width:40%"></div>
-                        </div>
-
-                    </div>
-
-
-                    <div class="metric-card">
-
-                        <span>DialoGPT-medium</span>
-
-                        <h3>4.58</h3>
-
-                        <small>tokens / second</small>
-
-                        <div class="metric-bar">
-                            <div style="width:13%"></div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="content-card">
-
-                    <p class="section-label">
-                        EXPERIMENTAL INTERPRETATION
-                    </p>
-
-                    <h3>What the results indicate</h3>
-
-                    <p class="interpretation">
-                        The benchmark demonstrates a resource-performance
-                        trade-off across the tested models. Increasing model
-                        size increases memory requirements, while throughput
-                        can decrease substantially under the same CPU
-                        environment.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
+    <div class="page-heading">
+        <div>
+            <p class="section-label">EXPERIMENTS</p>
+            <h2>Model Benchmarking</h2>
+            <p>Run models and view measured performance.</p>
+        </div>
+    </div>
+
+    <div class="content-card">
+        <h3>Live Benchmark Results</h3>
+        <div id="live-phase1-table" class="live-table-wrap"></div>
+    </div>
+
+
+    <div class="content-card experiment-control-panel">
+    <div class="live-lab-header">
+        <div>
+            <h3>Experiment Control Center</h3>
+            <p>Configure an experiment here. Start it securely from the AWS Ubuntu host.</p>
+        </div>
+    </div>
+
+    <div class="experiment-form">
+        <div>
+            <label for="experiment-phase">Experiment Type</label>
+            <select id="experiment-phase">
+                <option value="phase1">Model Performance Benchmarking</option>
+                <option value="phase2_precision">Precision Optimization</option>
+                <option value="phase2_batching">Batch Optimization</option>
+                <option value="phase3_lora">LoRA Fine-Tuning</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="experiment-model">Select Model</label>
+            <select id="experiment-model">
+                <option value="distilbert/distilgpt2">DistilGPT-2</option>
+                <option value="microsoft/DialoGPT-small">DialoGPT Small</option>
+                <option value="microsoft/DialoGPT-medium">DialoGPT Medium</option>
+            </select>
+            <small id="model-selection-note" class="system-note">
+                Choose a model for benchmarking.
+            </small>
+        </div>
+
+        <button id="run-experiment-btn" class="primary-button">
+            Run Experiment →
+        </button>
+    </div>
+
+    <p id="experiment-message" role="status">
+        Experiment execution is protected. Launch through the secure AWS host; results and status will appear here.
+    </p>
+</div>
+
+<div class="content-card">
+    <h3>Experiment Execution Status</h3>
+    <div id="experiment-current-status">
+        No experiment selected.
+    </div>
+</div>
+
+<div class="content-card">
+    <div class="live-lab-header">
+        <div>
+            <h3>Experiment History</h3>
+            <p>Previous experiment executions on AWS EC2.</p>
+        </div>
+        <button id="refresh-experiments" class="primary-button">
+            Refresh
+        </button>
+    </div>
+
+    <div id="experiment-history">
+        Loading experiment history...
+    </div>
+
+    <div id="experiment-details" class="experiment-details" hidden>
+        <div class="experiment-details-header">
+            <h3>Experiment Details</h3>
+            <button id="close-experiment-details" class="primary-button">
+                Close
+            </button>
+        </div>
+        <div id="experiment-details-content">
+            Select an experiment to view its results.
+        </div>
+    </div>
+</div>
+</section>
 
 <section id="phase2" class="page-section">
-            <p class="results-subheading">Recorded precision benchmark data</p>
-            <canvas id="live-precision-chart" class="live-chart" aria-label="Precision throughput chart"></canvas>
-            <div id="live-precision-table" class="live-table-wrap"></div>
-            <h3 class="results-subheading">Batching benchmark data</h3>
-            <canvas id="live-batching-chart" class="live-chart" aria-label="Batch size throughput chart"></canvas>
-            <div id="live-batching-table" class="live-table-wrap"></div>
-        
+    <div class="page-heading">
+        <div>
+            <p class="section-label">OPTIMIZATION</p>
+            <h2>Model Optimization</h2>
+        </div>
+    </div>
 
-            <div class="page-heading">
+    <div class="content-card">
+        <h3>Precision Optimization Results</h3>
+        <canvas id="live-precision-chart" class="live-chart" aria-label="Precision throughput chart"></canvas>
+        <div id="live-precision-table" class="live-table-wrap"></div>
+    </div>
 
-                <div>
-                    <p class="section-label">PHASE 02</p>
-
-                    <h2>Model Optimization</h2>
-
-                    <p>
-                        Optimize inference through precision and
-                        batch-processing strategies.
-                    </p>
-                </div>
-
-                <span class="completed-badge">
-                    ✓ EXPERIMENT RECORDED
-                </span>
-
-            </div>
-
-
-            <div class="optimization-grid">
-
-                <div class="content-card">
-
-                    <span class="big-number">01</span>
-
-                    <h3>FP32 vs FP16</h3>
-
-                    <p>
-                        Compare model precision to study the effect on
-                        memory consumption and inference performance.
-                    </p>
-
-                    <span class="phase-status">
-                        Recorded Benchmark Results
-                    </span>
-
-                </div>
-
-
-                <div class="content-card">
-
-                    <span class="big-number">02</span>
-
-                    <h3>Batch Processing</h3>
-
-                    <p>
-                        Evaluate different batch sizes and measure
-                        throughput and parallel efficiency.
-                    </p>
-
-                    <span class="phase-status">
-                        Recorded Benchmark Results
-                    </span>
-
-                </div>
-
-            </div>
-
-        </section>
+    <div class="content-card">
+        <h3>Batch Optimization Results</h3>
+        <canvas id="live-batching-chart" class="live-chart" aria-label="Batch size throughput chart"></canvas>
+        <div id="live-batching-table" class="live-table-wrap"></div>
+    </div>
+</section>
 
 <section id="phase3" class="page-section">
-            <p class="results-subheading">Recorded fine-tuning experiment</p>
-            <div id="live-lora-table" class="live-table-wrap">Loading LoRA results...</div>
-        
+    <div class="page-heading">
+        <div>
+            <p class="section-label">FINE-TUNING</p>
+            <h2>LoRA Fine-Tuning</h2>
+        </div>
+    </div>
 
-            <div class="page-heading">
+    <div class="content-card">
+        <h3>Fine-Tuning Results</h3>
+        <div id="live-lora-table" class="live-table-wrap">Loading LoRA results...</div>
+    </div>
 
-                <div>
-                    <p class="section-label">PHASE 03</p>
-
-                    <h2>LoRA Fine-Tuning</h2>
-
-                    <p>
-                        Parameter-efficient fine-tuning and model
-                        evaluation.
-                    </p>
-                </div>
-
-                <span class="completed-badge">
-                    ✓ EXPERIMENT RECORDED
-                </span>
-
-            </div>
-
-
-            <div class="content-card lora-card">
-
-                <div class="lora-flow">
-
-                    <div>
-                        <span>BASE MODEL</span>
-                        <strong>Pre-trained LLM</strong>
-                    </div>
-
-                    <div class="arrow">→</div>
-
-                    <div>
-                        <span>LoRA</span>
-                        <strong>Parameter-Efficient Training</strong>
-                    </div>
-
-                    <div class="arrow">→</div>
-
-                    <div>
-                        <span>EVALUATION</span>
-                        <strong>Training Metrics Recorded</strong>
-                    </div>
-
-                </div>
-
-                <hr>
-
-                <p>
-                    A LoRA training run was completed on the base model.
-                    Training time, evaluation time, generation time
-                    and trainable parameter count were recorded.
-                    A formal baseline-versus-adapter output-quality
-                    comparison remains future work.
-                </p>
-
-            </div>
-
-        </section>
+    </section>
 
 <section id="live-lab" class="page-section">
             <div class="page-heading">
@@ -705,68 +292,74 @@
                     through the FastAPI monitoring endpoint.
                 </p>
             </div>
-<div class="content-card experiment-control-panel">
-    <div class="live-lab-header">
-        <div>
-            <h3>Experiment Control Center</h3>
-            <p>Launch machine learning experiments directly on AWS EC2.</p>
-        </div>
-        <span class="live-dot"></span>
+</section>
+
+
+<section id="advisor" class="page-section">
+
+    <div class="page-heading">
+        <p class="section-label">INTELLIGENT MODEL SELECTION</p>
+        <h2>AI Model Advisor</h2>
+        <p>Find suitable language models using your benchmark measurements.</p>
     </div>
 
-    <div class="experiment-form">
-        <div>
-            <label for="experiment-phase">Select Experiment</label>
-            <select id="experiment-phase">
-                <option value="phase1">Phase 1 — Model Benchmarking</option>
-                <option value="phase2_precision">Phase 2 — Precision Optimization</option>
-                <option value="phase2_batching">Phase 2 — Batching Optimization</option>
-                <option value="phase3_lora">Phase 3 — LoRA Fine-Tuning</option>
-            </select>
-        </div>
+    <div class="content-card advisor-intro">
+        <h3>What are you building?</h3>
+        <p>Describe your application and requirements. The advisor will compare available models using recorded performance data.</p>
 
-        <div>
-            <label for="experiment-model">Select Model</label>
-            <select id="experiment-model">
-                <option value="distilbert/distilgpt2">DistilGPT-2</option>
-                <option value="microsoft/DialoGPT-small">DialoGPT Small</option>
-                <option value="microsoft/DialoGPT-medium">DialoGPT Medium</option>
-            </select>
+        <div class="advisor-suggestions">
+            <button class="advisor-prompt" data-prompt="I want to build a customer support chatbot.">Customer support chatbot</button>
+            <button class="advisor-prompt" data-prompt="I need a fast text generation model with low latency.">Fast text generation</button>
+            <button class="advisor-prompt" data-prompt="I have limited RAM and need a lightweight model.">Low-memory application</button>
+            <button class="advisor-prompt" data-prompt="I want to process multiple requests together with high throughput.">High-throughput application</button>
         </div>
 
-        <button id="run-experiment-btn" class="primary-button">
-            Run Experiment →
-        </button>
-    </div>
+        <div class="advisor-chat">
+            <label for="advisor-query">Describe your use case</label>
+            <textarea id="advisor-query" rows="4" placeholder="Example: I want to build a chatbot for my website. It should respond quickly and run on a CPU with limited RAM."></textarea>
 
-    <p id="experiment-message" role="status">
-        Ready to launch an experiment.
-    </p>
-</div>
-
-<div class="content-card">
-    <h3>Experiment Execution Status</h3>
-    <div id="experiment-current-status">
-        No experiment selected.
-    </div>
-</div>
-
-<div class="content-card">
-    <div class="live-lab-header">
-        <div>
-            <h3>Experiment History</h3>
-            <p>Previous experiment executions on AWS EC2.</p>
+            <button id="advisor-submit" class="primary-button">
+                Find Best Models
+            </button>
         </div>
-        <button id="refresh-experiments" class="primary-button">
-            Refresh
-        </button>
     </div>
 
-    <div id="experiment-history">
-        Loading experiment history...
+    <div id="advisor-response" class="advisor-response" hidden>
+        <h3>Model Recommendations</h3>
+        <div id="advisor-response-content"></div>
     </div>
-</div>
-        </section>
+
+    <div class="benchmark-coverage">
+        <div class="benchmark-coverage-heading">
+            <div>
+                <p class="section-label">EXPERIMENTAL PERFORMANCE</p>
+                <h3>Benchmark Coverage</h3>
+                <p>Live measurements collected from model experiments on this AWS environment.</p>
+            </div>
+            <span id="benchmark-coverage-status">Awaiting experiments</span>
+        </div>
+
+        <div class="benchmark-coverage-grid">
+            <div class="benchmark-coverage-item">
+                <span>Models tested</span>
+                <strong id="benchmark-model-count">0</strong>
+            </div>
+            <div class="benchmark-coverage-item">
+                <span>Average latency</span>
+                <strong id="benchmark-average-latency">—</strong>
+            </div>
+            <div class="benchmark-coverage-item">
+                <span>Highest peak RAM</span>
+                <strong id="benchmark-peak-ram">—</strong>
+            </div>
+        </div>
+
+        <p id="advisor-benchmark-status" class="benchmark-coverage-note">
+            Performance metrics will appear here after successful benchmark experiments.
+        </p>
+    </div>
+
+</section>
 
 <section id="results" class="page-section">
 
@@ -804,9 +397,9 @@
     </div>
 
     <div class="result-highlight">
-        <span>HIGHEST PEAK RAM</span>
+        <span>HIGHEST PHASE 1 MODEL PEAK RAM</span>
         <strong id="result-highest-ram">—</strong>
-        <small>process memory</small>
+        <small>Among successfully benchmarked Phase 1 models</small>
         <p id="result-ram-model">Waiting for results</p>
     </div>
 
@@ -814,52 +407,7 @@
 
         </section>
 
-<section id="conclusion" class="page-section">
-            <div class="page-heading">
-                <div>
-                    <p class="section-label">RESEARCH SUMMARY</p>
-                    <h2>Conclusion & Future Scope</h2>
-                    <p>
-                        Key observations, experimental limitations
-                        and opportunities for further research.
-                    </p>
-                </div>
-            </div>
 
-            <div class="content-card">
-                <h3>Research Conclusion</h3>
-                <p>
-                    This project establishes an experimental environment
-                    for comparing language-model inference performance,
-                    evaluating optimization strategies and demonstrating
-                    parameter-efficient fine-tuning on CPU infrastructure.
-                    The recorded experiments provide measurements of
-                    throughput, inference time and memory consumption
-                    under the tested configurations.
-                </p>
-            </div>
-
-            <div class="content-card">
-                <h3>Research Limitations</h3>
-                <ul>
-                    <li>Experiments were conducted on a CPU-based environment without GPU acceleration.</li>
-                    <li>Results reflect the tested models, workloads and hardware configuration.</li>
-                    <li>A formal baseline-versus-LoRA output-quality comparison has not been recorded.</li>
-                    <li>Performance may vary on different hardware and software configurations.</li>
-                </ul>
-            </div>
-
-            <div class="content-card">
-                <h3>Future Scope</h3>
-                <ul>
-                    <li>Compare CPU and GPU inference performance.</li>
-                    <li>Evaluate additional model architectures and quantization methods.</li>
-                    <li>Expand workload sizes and benchmark repetitions.</li>
-                    <li>Introduce formal language-quality evaluation metrics.</li>
-                    <li>Extend infrastructure monitoring and experiment history.</li>
-                </ul>
-            </div>
-        </section>
 
     </main>
 

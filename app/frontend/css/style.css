@@ -1099,3 +1099,671 @@ tbody tr:hover {
         grid-template-columns: 1fr;
     }
 }
+
+/* Experiment details viewer */
+.experiment-details {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+
+.experiment-details[hidden] {
+    display: none;
+}
+
+.experiment-details-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.experiment-history-row {
+    cursor: pointer;
+}
+
+.experiment-history-row:hover {
+    background: var(--accent-soft);
+}
+
+.experiment-details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.experiment-detail-card {
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow-wrap: anywhere;
+}
+
+.experiment-detail-card small {
+    display: block;
+    color: var(--muted);
+    margin-bottom: 7px;
+}
+
+.experiment-detail-card strong {
+    font-size: 14px;
+}
+
+.experiment-detail-section {
+    margin-top: 22px;
+    overflow-x: auto;
+}
+
+.experiment-detail-section pre {
+    padding: 14px;
+    max-height: 360px;
+    overflow: auto;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    background: var(--accent-soft);
+    border-radius: 8px;
+    font-size: 12px;
+}
+
+.experiment-detail-section table {
+    width: 100%;
+}
+
+@media (max-width: 760px) {
+    .experiment-details-header {
+        align-items: flex-start;
+    }
+}
+
+/* Experiment result graph images */
+.experiment-detail-image {
+    display: block;
+    width: 100%;
+    max-width: 850px;
+    height: auto;
+    margin: 16px auto;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: white;
+}
+
+.experiment-history-row:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
+}
+
+/* AI Model Advisor */
+.advisor-intro {
+    margin-top: 24px;
+}
+
+.advisor-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.advisor-prompt {
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: var(--accent-soft);
+    color: var(--text);
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.advisor-prompt:hover {
+    border-color: var(--accent);
+}
+
+.advisor-chat {
+    display: grid;
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.advisor-chat textarea {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--card);
+    color: var(--text);
+    font: inherit;
+    resize: vertical;
+}
+
+.advisor-response {
+    margin-top: 24px;
+}
+
+.advisor-response[hidden] {
+    display: none;
+}
+
+.advisor-response-content {
+    display: grid;
+    gap: 16px;
+}
+
+.advisor-model-card {
+    padding: 18px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--card);
+}
+
+.advisor-model-card h4 {
+    margin-top: 0;
+}
+
+.advisor-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 12px;
+    margin-top: 14px;
+}
+
+.advisor-metric {
+    padding: 12px;
+    border-radius: 8px;
+    background: var(--accent-soft);
+}
+
+.advisor-metric small {
+    display: block;
+    color: var(--muted);
+    margin-bottom: 5px;
+}
+
+.advisor-metric strong {
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 760px) {
+    .advisor-suggestions {
+        flex-direction: column;
+    }
+
+    .advisor-prompt {
+        text-align: left;
+    }
+}
+
+/* Recommended model presentation */
+#advisor-response-content {
+    display: grid;
+    gap: 18px;
+}
+
+#advisor-response-content .advisor-model-card {
+    margin: 0;
+    padding: 24px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+#advisor-response-content .advisor-recommended-card {
+    border: 2px solid var(--accent);
+    background: var(--card);
+}
+
+.advisor-recommended-card h2 {
+    margin: 8px 0 18px;
+    font-size: 25px;
+}
+
+.advisor-recommended-card h4 {
+    margin: 20px 0 10px;
+}
+
+#advisor-response-content ul {
+    padding-left: 22px;
+    line-height: 1.8;
+}
+
+#advisor-response-content .advisor-metrics {
+    margin: 20px 0;
+}
+
+#advisor-response-content .advisor-model-card small {
+    color: var(--muted);
+}
+
+#advisor-response-content .advisor-model-card > div + div {
+    margin-top: 14px;
+}
+
+/* AI Model Advisor - presentation refinement */
+#advisor-response {
+    scroll-margin-top: 110px;
+}
+
+#advisor-response-content {
+    gap: 14px;
+}
+
+#advisor-response-content .advisor-model-card {
+    padding: 22px;
+}
+
+#advisor-response-content .advisor-recommended-card {
+    border: 2px solid var(--accent);
+    border-radius: 12px;
+    padding: 26px;
+}
+
+#advisor-response-content .advisor-recommended-card h2 {
+    margin: 5px 0 10px;
+}
+
+#advisor-response-content .advisor-recommended-card h4 {
+    margin: 17px 0 8px;
+}
+
+.advisor-benchmark-label {
+    display: inline-block;
+    color: var(--muted);
+    background: var(--surface-soft);
+    padding: 3px 9px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.advisor-summary {
+    margin: 0 0 4px;
+    color: var(--muted);
+}
+
+.advisor-note {
+    color: var(--muted);
+    font-size: 13px;
+    margin: 0;
+}
+
+#advisor-response-content .advisor-model-card > div + div {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+}
+
+@media (max-width: 760px) {
+    #advisor-response-content .advisor-model-card {
+        padding: 17px;
+    }
+}
+
+/* Compact benchmark coverage panel */
+.benchmark-coverage {
+    margin-top: 22px;
+    padding: 22px 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+.benchmark-coverage-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.benchmark-coverage-heading h3 {
+    margin: 2px 0 4px;
+}
+
+.benchmark-coverage-heading p:not(.section-label) {
+    margin: 0;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+#benchmark-coverage-status {
+    flex-shrink: 0;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background: var(--surface-soft);
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.benchmark-coverage-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.benchmark-coverage-item {
+    padding: 14px 16px;
+    background: var(--background);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+}
+
+.benchmark-coverage-item span {
+    display: block;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.benchmark-coverage-item strong {
+    display: block;
+    margin-top: 5px;
+    font-size: 23px;
+    font-weight: 650;
+}
+
+.benchmark-coverage-note {
+    margin: 13px 0 0;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+@media (max-width: 600px) {
+    .benchmark-coverage {
+        padding: 17px;
+    }
+
+    .benchmark-coverage-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .benchmark-coverage-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* Dashboard metric cards */
+.live-metrics-grid {
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 18px;
+    margin: 24px 0;
+}
+
+.live-metric-card {
+    min-width: 0;
+    padding: 20px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    box-shadow: 0 3px 12px rgba(25, 35, 45, 0.04);
+}
+
+.live-metric-label {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.live-metric-value {
+    margin-top: 8px;
+    color: var(--text);
+    font-size: 29px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.live-metric-detail {
+    margin-top: 7px;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.experiment-control-panel {
+    padding: 24px;
+}
+
+.experiment-form {
+    gap: 14px;
+    margin-top: 18px;
+}
+
+#experiment-message {
+    margin: 12px 0 0;
+    padding: 10px 12px;
+    border-radius: 6px;
+    background: var(--surface-soft);
+}
+
+.page-section,
+.page-section.active-section {
+    scroll-margin-top: 120px;
+}
+
+html {
+    scroll-padding-top: 120px;
+}
+
+
+
+/* FINAL PLATFORM LAYOUT REFINEMENTS */
+
+/* Stable navigation and section positioning */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 145px;
+}
+
+.sidebar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    min-height: 76px;
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(25, 35, 45, 0.035);
+}
+
+.page-section,
+.page-section.active-section {
+    scroll-margin-top: 145px;
+    padding-top: 52px;
+    padding-bottom: 52px;
+}
+
+.page-heading {
+    margin-bottom: 26px;
+}
+
+.page-heading h2 {
+    margin-top: 0;
+}
+
+/* Compact experiment controls */
+.experiment-control-panel {
+    padding: 24px;
+}
+
+.experiment-control-panel .live-lab-header {
+    margin-bottom: 8px;
+    align-items: flex-start;
+}
+
+.experiment-control-panel .live-lab-header h3 {
+    margin: 0 0 5px;
+}
+
+.experiment-control-panel .live-lab-header p {
+    margin: 0;
+}
+
+.experiment-control-panel .experiment-form {
+    margin-top: 14px;
+    gap: 14px;
+    align-items: end;
+}
+
+.experiment-control-panel .experiment-form label {
+    margin-bottom: 7px;
+}
+
+.experiment-control-panel #experiment-message {
+    margin: 12px 0 0;
+    padding: 10px 12px;
+    border-radius: 6px;
+    background: var(--surface-soft);
+}
+
+/* Keep dashboard metrics and charts responsive */
+.live-metrics-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.live-metric-card {
+    height: 100%;
+}
+
+.content-card {
+    min-width: 0;
+}
+
+.live-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+}
+
+/* Smaller screens */
+@media (max-width: 760px) {
+    .sidebar {
+        position: sticky;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        padding: 10px 4%;
+    }
+
+    .sidebar nav {
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-item {
+        padding: 8px;
+        font-size: 11px;
+    }
+
+    .page-section,
+    .page-section.active-section {
+        scroll-margin-top: 155px;
+        padding-top: 36px;
+        padding-bottom: 36px;
+    }
+
+    html {
+        scroll-padding-top: 155px;
+    }
+
+    .experiment-control-panel {
+        padding: 18px;
+    }
+
+    .experiment-form {
+        grid-template-columns: 1fr;
+    }
+
+    .live-metrics-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 420px) {
+    .live-metrics-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* EXPERIMENT CONTROL CENTER FINAL ALIGNMENT */
+.experiment-control-panel .experiment-form {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+    align-items: start;
+    gap: 14px;
+    margin-top: 18px;
+}
+
+.experiment-control-panel .experiment-form > div {
+    align-self: start;
+}
+
+.experiment-control-panel .experiment-form > div label {
+    margin-bottom: 7px;
+}
+
+.experiment-control-panel .experiment-form > div select {
+    min-height: 46px;
+}
+
+.experiment-control-panel #run-experiment-btn {
+    align-self: start;
+    margin-top: 27px;
+    min-height: 46px;
+}
+
+.experiment-control-panel #experiment-model + small {
+    display: block;
+    margin-top: 6px;
+}
+
+@media (max-width: 760px) {
+    .experiment-control-panel .experiment-form {
+        grid-template-columns: 1fr;
+    }
+
+    .experiment-control-panel #run-experiment-btn {
+        margin-top: 0;
+    }
+}
+
+/* LoRA experiment results: responsive metric cards */
+.lora-results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 14px;
+    margin: 22px 0;
+}
+
+.lora-result-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    min-width: 0;
+    padding: 18px;
+    background: #f8f9fa;
+    border: 1px solid #e1e5e9;
+    border-radius: 10px;
+}
+
+.lora-result-label {
+    color: #687586;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.lora-result-value {
+    color: #273444;
+    font-size: 19px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.lora-results-note {
+    color: #687586;
+    line-height: 1.6;
+    margin: 10px 0 18px;
+}
+
+@media (max-width: 600px) {
+    .lora-results-grid {
+        grid-template-columns: 1fr;
+    }
+}

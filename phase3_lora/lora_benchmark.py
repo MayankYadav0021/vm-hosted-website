@@ -13,8 +13,8 @@ from peft import LoraConfig, TaskType, get_peft_model
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 ROOT = Path(__file__).resolve().parents[1]
-RESULTS_DIR = ROOT / "results" / "phase3"
-ADAPTER_DIR = ROOT / "models" / "phase3_lora" / "adapter"
+RESULTS_DIR = Path(os.environ.get("AI_DEVOPS_RESULTS_DIR", str(ROOT / "results" / "phase3")))
+ADAPTER_DIR = Path(os.environ.get("AI_DEVOPS_ADAPTER_DIR", str(ROOT / "models" / "phase3_lora" / "adapter")))
 CSV_PATH = RESULTS_DIR / "lora_results.csv"
 JSON_PATH = RESULTS_DIR / "lora_results.json"
 
@@ -74,6 +74,15 @@ def main():
     }
 
     try:
+        available_gib = psutil.virtual_memory().available / (1024 ** 3)
+        print(f"Available system RAM before training: {available_gib:.2f} GiB", flush=True)
+
+        if available_gib < 1.5:
+            raise RuntimeError(
+                f"Only {available_gib:.2f} GiB RAM is available; "
+                "LoRA training requires at least 1.5 GiB available RAM."
+            )
+
         torch.manual_seed(42)
         torch.set_num_threads(max(1, min(2, os.cpu_count() or 1)))
 

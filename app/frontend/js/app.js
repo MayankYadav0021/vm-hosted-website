@@ -26,6 +26,31 @@ navItems.forEach(item => {
     });
 });
 
+// Keep the sidebar highlight synchronized with the visible section.
+if ("IntersectionObserver" in window) {
+    const sectionObserver = new IntersectionObserver(entries => {
+        const visible = entries
+            .filter(entry => entry.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (!visible) return;
+
+        const sectionId = visible.target.id;
+        const navSection = ["phase1", "phase2", "phase3"].includes(sectionId)
+            ? "phase1"
+            : sectionId;
+
+        navItems.forEach(item => {
+            item.classList.toggle("active", item.dataset.section === navSection);
+        });
+    }, {
+        rootMargin: "-18% 0px -65% 0px",
+        threshold: [0, 0.1, 0.25, 0.5]
+    });
+
+    sections.forEach(section => sectionObserver.observe(section));
+}
+
 function showPhase1Tab(tabName) {
     document.querySelectorAll(".phase1-content").forEach(content => content.classList.add("hidden"));
     document.querySelectorAll(".tab").forEach(tab => tab.classList.remove("active-tab"));
@@ -143,35 +168,33 @@ const bestThroughput = throughputRows.length
     )
     : null;
 
-const largestModel = phase1.length
-    ? phase1.reduce((largest, row) =>
+const modelsWithSize = latestPhase1.filter(row =>
+    Number.isFinite(Number(row.parameters_millions)) &&
+    Number(row.parameters_millions) > 0
+);
+
+const largestModel = modelsWithSize.length
+    ? modelsWithSize.reduce((largest, row) =>
         Number(row.parameters_millions) >
         Number(largest.parameters_millions) ? row : largest
     )
     : null;
 
-const ramRows = [
-    ...phase1.map(row => ({
-        ram: row.peak_ram_gb,
+// Compare Phase 1 model peak RAM only.
+// Phase 2 and Phase 3 use different process-memory measurements.
+const ramRows = latestPhase1
+    .filter(row =>
+        row.status === "success" &&
+        Number.isFinite(Number(row.peak_ram_gb))
+    )
+    .map(row => ({
+        ram: Number(row.peak_ram_gb),
         model: row.model
-    })),
-    ...precision.map(row => ({
-        ram: row.peak_process_ram_gb,
-        model: row.model
-    })),
-    ...batching.map(row => ({
-        ram: row.peak_process_ram_gb,
-        model: row.model
-    })),
-    ...lora.map(row => ({
-        ram: row.peak_process_ram_gb,
-        model: row.model
-    }))
-].filter(row => Number.isFinite(Number(row.ram)));
+    }));
 
 const highestRam = ramRows.length
     ? ramRows.reduce((highest, row) =>
-        Number(row.ram) > Number(highest.ram) ? row : highest
+        row.ram > highest.ram ? row : highest
     )
     : null;
 
@@ -219,11 +242,11 @@ setResult(
     const metricContainer = document.getElementById("live-overview-metrics");
     if (metricContainer) {
         metricContainer.replaceChildren();
-        addMetric(metricContainer, "Phase 1 Models", String(successfulModels), "Successful model benchmarks");
-        addMetric(metricContainer, "Phase 1 Requests", `${successfulRequests}/${totalRequests}`, "Successful recorded requests");
+        addMetric(metricContainer, "Benchmarked Models", String(successfulModels), "Successful model benchmarks");
+        addMetric(metricContainer, "Benchmark Requests", `${successfulRequests}/${totalRequests}`, "Successful recorded requests");
         addMetric(metricContainer, "Precision Tests", String(precision.length), "FP32 and FP16 runs");
         addMetric(metricContainer, "Batching Tests", String(batching.length), "Batch sizes tested");
-        addMetric(metricContainer, "LoRA Runs", String(lora.length), lora.length ? "Recorded LoRA experiments" : "Not implemented yet");
+        addMetric(metricContainer, "LoRA Runs", String(lora.length), lora.length ? "Recorded LoRA experiments" : "No runs recorded");
     }
 
     const p1Table = document.getElementById("live-phase1-table");
@@ -235,7 +258,7 @@ setResult(
         { key: "avg_tokens_per_sec", label: "Tokens/s" },
         { key: "peak_ram_gb", label: "Peak RAM (GB)" },
         { key: "successful_requests", label: "Successful" }
-    ], phase1.map(row => ({
+    ], latestPhase1.map(row => ({
         ...row,
         parameters_millions: number(row.parameters_millions, 1),
         load_time_sec: number(row.load_time_sec, 2),
@@ -303,11 +326,11 @@ setResult(
                 ["Training examples", row.training_examples],
                 ["Epochs", row.epochs],
                 ["Trainable parameters", Number(row.trainable_parameters || 0).toLocaleString()],
-                ["Trainable parameters", `${number(row.trainable_parameter_percent, 4)}% of total`],
+                ["Trainable parameter share", `${number(row.trainable_parameter_percent, 4)}% of total`],
                 ["Training time", `${number(row.training_time_sec, 3)} s`],
                 ["Evaluation time", `${number(row.evaluation_time_sec, 3)} s`],
                 ["Average generation time", `${number(row.avg_generation_time_sec, 4)} s`],
-                ["Peak process RAM", `${number(row.peak_process_ram_gb, 4)} GB`],
+                ["Reported process RAM", `${number(row.peak_process_ram_gb, 4)} GB`],
                 ["Run status", row.status || "Recorded"]
             ];
 
@@ -567,62 +590,18 @@ let activeExperimentId = null;
 let experimentPolling = null;
 
 const experimentNames = {
-    phase1: "Model Benchmarking",
+    phase1: "Model Performance Benchmarking",
     phase2_precision: "Precision Optimization",
-    phase2_batching: "Batching Optimization",
+    phase2_batching: "Batch Optimization",
     phase3_lora: "LoRA Fine-Tuning"
 };
 
 async function launchExperiment() {
-    const phase = document.getElementById("experiment-phase").value;
-    const model = document.getElementById("experiment-model").value;
-
-    const button = document.getElementById("run-experiment-btn");
     const message = document.getElementById("experiment-message");
-
-    button.disabled = true;
-    message.textContent = "Submitting experiment to AWS EC2...";
-
-    try {
-        const response = await fetch(`${API_BASE}/api/experiments`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                phase: phase,
-                model: model,
-                workload: "chat_conversation"
-            })
-        });
-
-        const data = await response.json();
-
-        if (!response.ok) {
-            throw new Error(data.detail || "Experiment could not start.");
-        }
-
-        activeExperimentId = data.id;
-
+    if (message) {
         message.textContent =
-            `${experimentNames[phase]} submitted successfully.`;
-
-        updateCurrentExperiment(data);
-
-        await fetchExperimentHistory();
-
-        if (experimentPolling) {
-            clearInterval(experimentPolling);
-        }
-
-        experimentPolling = setInterval(
-            pollActiveExperiment,
-            3000
-        );
-
-    } catch (error) {
-        message.textContent = error.message;
-        button.disabled = false;
+            "For security, experiments must be launched from the AWS Ubuntu host. " +
+            "The public website is read-only for experiment execution.";
     }
 }
 
@@ -689,6 +668,202 @@ async function pollActiveExperiment() {
     }
 }
 
+
+function addDetailSection(container, title) {
+    const section = document.createElement("section");
+    section.className = "experiment-detail-section";
+
+    const heading = document.createElement("h4");
+    heading.textContent = title;
+    section.appendChild(heading);
+
+    container.appendChild(section);
+    return section;
+}
+
+function renderExperimentTable(section, rows) {
+    if (!Array.isArray(rows) || rows.length === 0) {
+        section.append("No rows available.");
+        return;
+    }
+
+    const columns = [...new Set(rows.flatMap(row =>
+        row && typeof row === "object" ? Object.keys(row) : []
+    ))];
+
+    if (!columns.length) {
+        const pre = document.createElement("pre");
+        pre.textContent = JSON.stringify(rows, null, 2);
+        section.appendChild(pre);
+        return;
+    }
+
+    const table = document.createElement("table");
+    table.className = "live-results-table";
+
+    const thead = document.createElement("thead");
+    const headerRow = document.createElement("tr");
+
+    columns.forEach(column => {
+        const th = document.createElement("th");
+        th.textContent = column;
+        headerRow.appendChild(th);
+    });
+
+    thead.appendChild(headerRow);
+    table.appendChild(thead);
+
+    const tbody = document.createElement("tbody");
+
+    rows.forEach(item => {
+        const row = document.createElement("tr");
+
+        columns.forEach(column => {
+            const cell = document.createElement("td");
+            const value = item?.[column];
+
+            cell.textContent =
+                value === null || value === undefined
+                    ? "—"
+                    : typeof value === "object"
+                        ? JSON.stringify(value)
+                        : String(value);
+
+            row.appendChild(cell);
+        });
+
+        tbody.appendChild(row);
+    });
+
+    table.appendChild(tbody);
+    section.appendChild(table);
+}
+
+async function openExperimentDetails(experimentId) {
+    const panel = document.getElementById("experiment-details");
+    const content = document.getElementById("experiment-details-content");
+
+    panel.hidden = false;
+    content.replaceChildren();
+
+    const loading = document.createElement("p");
+    loading.textContent = "Loading experiment results...";
+    content.appendChild(loading);
+
+    panel.scrollIntoView({ behavior: "smooth", block: "start" });
+
+    try {
+        const encodedId = encodeURIComponent(experimentId);
+
+        const [statusResponse, resultsResponse] = await Promise.all([
+            fetch(`${API_BASE}/api/experiments/${encodedId}`),
+            fetch(`${API_BASE}/api/experiments/${encodedId}/results`)
+        ]);
+
+        if (!statusResponse.ok || !resultsResponse.ok) {
+            throw new Error("Could not load experiment details.");
+        }
+
+        const job = await statusResponse.json();
+        const responseData = await resultsResponse.json();
+
+        content.replaceChildren();
+
+        const grid = document.createElement("div");
+        grid.className = "experiment-details-grid";
+
+        const details = [
+            ["Experiment", job.experiment || job.phase],
+            ["Model", job.model],
+            ["Status", job.status],
+            ["Created", job.created_at
+                ? new Date(job.created_at).toLocaleString()
+                : "—"],
+            ["Started", job.started_at
+                ? new Date(job.started_at).toLocaleString()
+                : "—"],
+            ["Finished", job.finished_at
+                ? new Date(job.finished_at).toLocaleString()
+                : "—"]
+        ];
+
+        details.forEach(([label, value]) => {
+            const card = document.createElement("div");
+            card.className = "experiment-detail-card";
+
+            const small = document.createElement("small");
+            small.textContent = label;
+
+            const strong = document.createElement("strong");
+            strong.textContent = value || "—";
+
+            card.append(small, strong);
+            grid.appendChild(card);
+        });
+
+        content.appendChild(grid);
+
+        const results = responseData.results || {};
+
+        Object.entries(results).forEach(([file, data]) => {
+            if (file === "log") return;
+
+            const section = addDetailSection(
+                content,
+                file.split("/").pop()
+            );
+
+            if (file.toLowerCase().endsWith(".csv")) {
+                renderExperimentTable(section, data);
+            } else {
+                const pre = document.createElement("pre");
+                pre.textContent = JSON.stringify(data, null, 2);
+                section.appendChild(pre);
+            }
+        });
+
+        const imageFiles = (job.result_files || [])
+            .filter(file => /\.(png|jpe?g|webp)$/i.test(file));
+
+        if (imageFiles.length) {
+            const section = addDetailSection(content, "Benchmark Graphs");
+
+            imageFiles.forEach(file => {
+                const image = document.createElement("img");
+                const encodedPath = file.split("/")
+                    .map(encodeURIComponent)
+                    .join("/");
+
+                image.src = `${API_BASE}/api/experiments/${encodedId}/files/${encodedPath}`;
+                image.alt = file.split("/").pop();
+                image.loading = "lazy";
+                image.className = "experiment-detail-image";
+
+                section.appendChild(image);
+            });
+        }
+
+        if (results.log) {
+            const section = addDetailSection(content, "Experiment Log");
+            const pre = document.createElement("pre");
+            pre.textContent = results.log;
+            section.appendChild(pre);
+        }
+
+        if (!Object.keys(results).length && !imageFiles.length) {
+            const empty = document.createElement("p");
+            empty.textContent = "No result files are available yet.";
+            content.appendChild(empty);
+        }
+
+    } catch (error) {
+        content.replaceChildren();
+        const message = document.createElement("p");
+        message.textContent = error.message;
+        content.appendChild(message);
+    }
+}
+
 async function fetchExperimentHistory() {
     const container = document.getElementById("experiment-history");
 
@@ -698,7 +873,6 @@ async function fetchExperimentHistory() {
         if (!response.ok) throw new Error("History unavailable.");
 
         const data = await response.json();
-
         container.replaceChildren();
 
         const jobs = data.experiments || [];
@@ -711,13 +885,7 @@ async function fetchExperimentHistory() {
         const table = document.createElement("table");
         table.className = "live-results-table";
 
-        const headers = [
-            "Experiment",
-            "Model",
-            "Status",
-            "Created"
-        ];
-
+        const headers = ["Experiment", "Model", "Status", "Created"];
         const thead = document.createElement("thead");
         const headerRow = document.createElement("tr");
 
@@ -734,9 +902,13 @@ async function fetchExperimentHistory() {
 
         jobs.forEach(job => {
             const row = document.createElement("tr");
+            row.className = "experiment-history-row";
+            row.tabIndex = 0;
+            row.setAttribute("role", "button");
+            row.setAttribute("aria-label", `View ${job.experiment || job.phase}`);
 
             [
-                experimentNames[job.experiment] || job.experiment,
+                experimentNames[job.experiment] || job.experiment || job.phase,
                 job.model,
                 job.status,
                 job.created_at
@@ -746,6 +918,17 @@ async function fetchExperimentHistory() {
                 const cell = document.createElement("td");
                 cell.textContent = value || "—";
                 row.appendChild(cell);
+            });
+
+            row.addEventListener("click", () =>
+                openExperimentDetails(job.id)
+            );
+
+            row.addEventListener("keydown", event => {
+                if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    openExperimentDetails(job.id);
+                }
             });
 
             tbody.appendChild(row);
@@ -760,6 +943,14 @@ async function fetchExperimentHistory() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    const closeDetails = document.getElementById("close-experiment-details");
+
+    if (closeDetails) {
+        closeDetails.addEventListener("click", () => {
+            document.getElementById("experiment-details").hidden = true;
+        });
+    }
+
     const button = document.getElementById("run-experiment-btn");
 
     if (button) {
@@ -776,15 +967,246 @@ document.addEventListener("DOMContentLoaded", () => {
     const modelSelect = document.getElementById("experiment-model");
 
     if (phaseSelect && modelSelect) {
-        phaseSelect.addEventListener("change", () => {
-            modelSelect.disabled = phaseSelect.value !== "phase1";
+        const updateModelSelection = () => {
+            const isBenchmark = phaseSelect.value === "phase1";
+            const note = document.getElementById("model-selection-note");
 
-            if (phaseSelect.value !== "phase1") {
+            modelSelect.disabled = !isBenchmark;
+
+            if (!isBenchmark) {
                 modelSelect.value = "distilbert/distilgpt2";
+                if (note) note.textContent =
+                    "This experiment currently supports DistilGPT-2 only.";
+            } else {
+                if (note) note.textContent =
+                    "Choose a model for benchmarking.";
             }
-        });
+        };
+
+        phaseSelect.addEventListener("change", updateModelSelection);
+        updateModelSelection();
     }
 
     fetchExperimentHistory();
 });
 
+
+// AI Model Advisor frontend
+document.addEventListener("DOMContentLoaded", () => {
+    const queryInput = document.getElementById("advisor-query");
+    const submitButton = document.getElementById("advisor-submit");
+    const responsePanel = document.getElementById("advisor-response");
+    const responseContent = document.getElementById("advisor-response-content");
+    const benchmarkStatus = document.getElementById("advisor-benchmark-status");
+
+    if (!queryInput || !submitButton || !responsePanel || !responseContent) {
+        return;
+    }
+
+    document.querySelectorAll(".advisor-prompt").forEach(button => {
+        button.addEventListener("click", () => {
+            queryInput.value = button.dataset.prompt || "";
+            queryInput.focus();
+        });
+    });
+
+    async function loadBenchmarks() {
+        const countElement = document.getElementById("benchmark-model-count");
+        const latencyElement = document.getElementById("benchmark-average-latency");
+        const ramElement = document.getElementById("benchmark-peak-ram");
+        const statusElement = document.getElementById("benchmark-coverage-status");
+
+        if (!countElement || !latencyElement || !ramElement || !statusElement) return;
+
+        try {
+            const response = await fetch("/api/advisor/benchmarks");
+            if (!response.ok) throw new Error("Unable to load benchmark data.");
+
+            const data = await response.json();
+            const models = data.models || [];
+
+            countElement.textContent = models.length;
+
+            if (models.length === 0) {
+                latencyElement.textContent = "—";
+                ramElement.textContent = "—";
+                statusElement.textContent = "Awaiting experiments";
+                benchmarkStatus.textContent =
+                    "No successful benchmark experiments are recorded yet. Run an experiment to populate these metrics.";
+                return;
+            }
+
+            const averageLatency =
+                models.reduce((sum, model) => sum + model.latency, 0) / models.length;
+
+            const highestRam = Math.max(...models.map(model => model.memory));
+
+            latencyElement.textContent = averageLatency.toFixed(3) + " s";
+            ramElement.textContent = highestRam.toFixed(2) + " GB";
+            statusElement.textContent = "Live benchmark data";
+
+            benchmarkStatus.textContent =
+                `${models.length} successfully benchmarked models: ` +
+                models.map(model => model.name).join(", ");
+
+        } catch (error) {
+            statusElement.textContent = "Data unavailable";
+            benchmarkStatus.textContent = error.message;
+        }
+    }
+
+    function addText(parent, tag, value) {
+        const element = document.createElement(tag);
+        element.textContent = value;
+        parent.appendChild(element);
+        return element;
+    }
+
+    async function getRecommendations() {
+        const query = queryInput.value.trim();
+
+        if (query.length < 5) {
+            responsePanel.hidden = false;
+            responseContent.textContent = "Please describe your application in more detail.";
+            return;
+        }
+
+        submitButton.disabled = true;
+        submitButton.textContent = "Analysing benchmarks...";
+        responsePanel.hidden = false;
+        responseContent.textContent = "Understanding your requirements and evaluating suitable models...";
+
+        try {
+            const response = await fetch("/api/advisor/recommend", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ query })
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.detail || "Recommendation request failed.");
+            }
+
+
+            responseContent.replaceChildren();
+
+            const models = data.recommendations || [];
+
+            if (data.summary) {
+                const summary = document.createElement("p");
+                summary.className = "advisor-summary";
+                summary.textContent = data.summary;
+                responseContent.appendChild(summary);
+            }
+
+            const best = models[0];
+
+            if (best) {
+                const card = document.createElement("div");
+                card.className = "advisor-model-card advisor-recommended-card";
+
+                addText(card, "h4", "Recommended model");
+                addText(card, "h2", best.name);
+                addText(card, "p", best.type + " · " + best.size);
+
+                const status = addText(card, "small", best.benchmark_status);
+                status.className = "advisor-benchmark-label";
+
+                addText(card, "h4", "Why this model");
+
+                const reasons = document.createElement("ul");
+                (best.reasons || []).forEach(reason => addText(reasons, "li", reason));
+                card.appendChild(reasons);
+
+                if (best.benchmark_status === "Benchmark complete") {
+                    addText(card, "h4", "Measured performance");
+
+                    const metrics = document.createElement("div");
+                    metrics.className = "advisor-metrics";
+
+                    [
+                        ["Average latency", best.latency],
+                        ["Throughput", best.throughput],
+                        ["Peak RAM", best.memory]
+                    ].forEach(([label, value], index) => {
+                        if (value === null || value === undefined || !Number.isFinite(Number(value))) return;
+
+                        const units = [" seconds", " tokens/sec", " GB"];
+                        const metric = document.createElement("div");
+                        metric.className = "advisor-metric";
+                        addText(metric, "small", label);
+                        addText(metric, "strong", Number(value).toFixed(2) + units[index]);
+                        metrics.appendChild(metric);
+                    });
+
+                    if (best.requests !== null && best.requests !== undefined) {
+                        const metric = document.createElement("div");
+                        metric.className = "advisor-metric";
+                        addText(metric, "small", "Successful requests");
+                        addText(metric, "strong", `${best.requests}/${best.total_requests}`);
+                        metrics.appendChild(metric);
+                    }
+
+                    card.appendChild(metrics);
+                } else {
+                    addText(card, "p", "This model is recommended for its capabilities. It has not yet been benchmarked on this EC2 instance.");
+                }
+
+                responseContent.appendChild(card);
+
+                if (models.length > 1) {
+                    const alternatives = document.createElement("div");
+                    alternatives.className = "advisor-model-card";
+                    addText(alternatives, "h4", "Alternatives considered");
+
+                    models.slice(1, 3).forEach(other => {
+                        const section = document.createElement("div");
+                        addText(section, "strong", other.name);
+
+                        const reason = (other.reasons || []).slice(0, 2).join("; ");
+                        addText(section, "p", reason || "A possible alternative for this application.");
+
+                        const benchmarkText = other.benchmark_status || "Not benchmarked";
+                        addText(section, "small", benchmarkText);
+
+                        alternatives.appendChild(section);
+                    });
+
+                    responseContent.appendChild(alternatives);
+                }
+            } else {
+                addText(responseContent, "p", "No suitable models were returned. Please try describing your application in more detail.");
+            }
+
+            if (data.limitations && data.limitations.length) {
+                const note = document.createElement("p");
+                note.className = "advisor-note";
+                note.textContent = data.limitations[0];
+                responseContent.appendChild(note);
+            }
+
+        responsePanel.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+        } catch (error) {
+            responseContent.textContent = error.message;
+        } finally {
+            submitButton.disabled = false;
+            submitButton.textContent = "Find Best Models";
+        }
+    }
+
+    submitButton.addEventListener("click", getRecommendations);
+
+    queryInput.addEventListener("keydown", event => {
+        if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
+            getRecommendations();
+        }
+    });
+
+    loadBenchmarks();
+});

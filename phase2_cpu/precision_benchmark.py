@@ -11,8 +11,8 @@ import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 ROOT = Path(__file__).resolve().parents[1]
-RESULTS = ROOT / "results" / "phase2"
-LOGS = ROOT / "logs"
+RESULTS = Path(os.environ.get("AI_DEVOPS_RESULTS_DIR", str(ROOT / "results" / "phase2")))
+LOGS = Path(os.environ.get("AI_DEVOPS_LOG_DIR", str(ROOT / "logs")))
 
 RESULTS.mkdir(parents=True, exist_ok=True)
 LOGS.mkdir(parents=True, exist_ok=True)

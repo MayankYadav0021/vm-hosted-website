@@ -1,0 +1,2 @@
+model,size_category,architecture,status,error,parameters,parameters_millions,estimated_fp32_size_gb,load_time_sec,ram_after_load_gb,total_requests,successful_requests,avg_inference_time_sec,avg_tokens_per_sec,total_output_tokens,avg_output_tokens,peak_ram_gb,avg_ram_delta_gb
+microsoft/DialoGPT-small,tiny,causal,success,,124439808,124.439808,0.4635744094848633,0.695040637627244,1.2974662780761719,13,13,0.27404599360978377,15.141812230935999,65,5.0,1.3104248046875,0.0009968097393329327

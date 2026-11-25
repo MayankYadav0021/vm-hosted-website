@@ -1,0 +1,2 @@
+model,size_category,architecture,status,error,parameters,parameters_millions,estimated_fp32_size_gb,load_time_sec,ram_after_load_gb,total_requests,successful_requests,avg_inference_time_sec,avg_tokens_per_sec,total_output_tokens,avg_output_tokens,peak_ram_gb,avg_ram_delta_gb
+distilbert/distilgpt2,tiny,causal,success,,81912576,81.912576,0.3051481246948242,0.35819502593949437,0.8618202209472656,13,13,1.1052562408865645,32.501779375996406,473,36.38461538461539,1.1752586364746094,0.02411064734825721

@@ -1,0 +1,41 @@
+{
+  "id": "004d8bf4-fbd0-48ed-b5fd-fcfa542c978c",
+  "phase": "phase1",
+  "experiment": "Model Benchmarking",
+  "model": "microsoft/DialoGPT-small",
+  "status": "completed",
+  "message": "Experiment completed successfully.",
+  "created_at": "2026-11-25T10:14:16.946996+00:00",
+  "updated_at": "2026-11-25T10:14:30.207118+00:00",
+  "started_at": "2026-11-25T10:14:16.948188+00:00",
+  "finished_at": "2026-11-25T10:14:30.207104+00:00",
+  "exit_code": null,
+  "log_file": "logs/experiment_004d8bf4-fbd0-48ed-b5fd-fcfa542c978c.log",
+  "tests": [
+    {
+      "name": "Model Benchmarking",
+      "phase": "phase1",
+      "status": "completed",
+      "exit_code": 0,
+      "result_files": [
+        "results/experiment_details/004d8bf4-fbd0-48ed-b5fd-fcfa542c978c/test_1/results/phase1_model_summary.json",
+        "results/experiment_details/004d8bf4-fbd0-48ed-b5fd-fcfa542c978c/test_1/results/phase1_model_summary.csv",
+        "results/experiment_details/004d8bf4-fbd0-48ed-b5fd-fcfa542c978c/test_1/results/microsoft_DialoGPT-small_requests.csv",
+        "results/experiment_details/004d8bf4-fbd0-48ed-b5fd-fcfa542c978c/test_1/figures/phase1_throughput.png",
+        "results/experiment_details/004d8bf4-fbd0-48ed-b5fd-fcfa542c978c/test_1/figures/phase1_model_parameters.png",
+        "results/experiment_details/004d8bf4-fbd0-48ed-b5fd-fcfa542c978c/test_1/figures/phase1_peak_ram.png",
+        "results/experiment_details/004d8bf4-fbd0-48ed-b5fd-fcfa542c978c/test_1/figures/phase1_inference_time.png"
+      ]
+    }
+  ],
+  "result_files": [
+    "results/experiment_details/004d8bf4-fbd0-48ed-b5fd-fcfa542c978c/test_1/results/phase1_model_summary.json",
+    "results/experiment_details/004d8bf4-fbd0-48ed-b5fd-fcfa542c978c/test_1/results/phase1_model_summary.csv",
+    "results/experiment_details/004d8bf4-fbd0-48ed-b5fd-fcfa542c978c/test_1/results/microsoft_DialoGPT-small_requests.csv",
+    "results/experiment_details/004d8bf4-fbd0-48ed-b5fd-fcfa542c978c/test_1/figures/phase1_throughput.png",
+    "results/experiment_details/004d8bf4-fbd0-48ed-b5fd-fcfa542c978c/test_1/figures/phase1_model_parameters.png",
+    "results/experiment_details/004d8bf4-fbd0-48ed-b5fd-fcfa542c978c/test_1/figures/phase1_peak_ram.png",
+    "results/experiment_details/004d8bf4-fbd0-48ed-b5fd-fcfa542c978c/test_1/figures/phase1_inference_time.png"
+  ],
+  "additional_tests_supported": true
+}
